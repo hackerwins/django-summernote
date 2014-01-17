@@ -36,9 +36,22 @@
     $('#summernote').html(src.value);
 
     $('#summernote').summernote({
-        height: $(document).height()-70,
+        height: {{ height }},
         toolbar: {{ toolbar|safe }},
         lang: '{{ lang }}',
+        oninit: function() {
+            var nEditor = $('.note-editor');
+            var nToolbar = $('.note-toolbar');
+            var nEditable = $('.note-editable');
+            var setHeight = parseInt(
+                                        {{ height }}  // default
+                                        - nToolbar.outerHeight()  // toolbar height including margin,border,padding
+                                        - (nEditable.innerHeight() - nEditable.height())  // editable's padding
+                                        - (nEditor.outerHeight() - nEditor.innerHeight())  // editor's border
+                                    );
+            
+            nEditable.height(setHeight);
+        },
         onblur: function() {
             src.value = $("#summernote").code();
         },

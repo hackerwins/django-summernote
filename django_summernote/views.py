@@ -11,6 +11,7 @@ def editor(request, id):
         'id': id,
         'toolbar': json.dumps(summernote_config['toolbar']),
         'lang': summernote_config['lang'],
+        'height': summernote_config['height'],
         'url': {
             'upload_attachment': reverse_lazy('django_summernote-upload_attachment'),
         },
