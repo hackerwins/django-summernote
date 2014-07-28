@@ -28,11 +28,11 @@ def _get_proper_language():
 class SummernoteWidgetBase(forms.Textarea):
     def template_contexts(self):
         return {
-            'toolbar': summernote_config['toolbar'],
-            'lang': _get_proper_language(),
-            'airMode': summernote_config['airMode'],
-            'styleWithSpan': summernote_config['styleWithSpan'],
-            'height': summernote_config['height'],
+            'toolbar': self.attrs.get('toolbar', summernote_config['toolbar']),
+            'lang': self.attrs.get('lang',_get_proper_language()),
+            'airMode': self.attrs.get('airMode', summernote_config['airMode']),
+            'styleWithSpan': self.attrs.get('styleWithSpan', summernote_config['styleWithSpan']),
+            'height': self.attrs.get('height', summernote_config['height']),
             'url': {
                 'upload_attachment':
                 reverse('django_summernote-upload_attachment'),
