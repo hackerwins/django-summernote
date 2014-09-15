@@ -122,13 +122,13 @@ In settings.py,
 
         # Set external media files for SummernoteInplaceWidget.
         # !!! Be sure to put {{ form.media }} in template before initiate summernote.
-        'inplacewidget_external_css': (                                             
-            '//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css',      
+        'inplacewidget_external_css': (
+            '//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css',
             '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css',
-        ),                                                                          
-        'inplacewidget_external_js': (                                              
-            '//code.jquery.com/jquery-1.9.1.min.js',                                
-            '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js',        
+        ),
+        'inplacewidget_external_js': (
+            '//code.jquery.com/jquery-1.9.1.min.js',
+            '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js',
         ),
     }
 
@@ -145,6 +145,20 @@ Or, you can styling editor via attributes of the widget. These adhoc styling wil
 (TODO) Document for addtional settings will be added, soon. :^D
 
 
+HTML WHITELIST SCRUBBING
+------------------------
+
+[Scrubber](https://github.com/samuel/python-scrubber/tree/master) is a
+white-listing HTML sanitizer. It uses BeautifulSoup to parse an HTML
+document and removes any tags and attributes that are not specifically
+allowed.
+
+To enable [Scrubber](https://github.com/samuel/python-scrubber/tree/master),
+simply install the library:
+
+    pip install scrubber
+
+
 AUTHOR
 ------
 
@@ -156,6 +170,7 @@ THANKS TO
 
   - [jaeyoung](https://github.com/jeyraof) : Debugging on Django 1.4
   - [kroisse](https://github.com/kroisse) : Fixing problem on importing module
+
 
 LICENSE
 -------
