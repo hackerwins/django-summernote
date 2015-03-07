@@ -29,6 +29,7 @@ class SummernoteWidgetBase(forms.Textarea):
     def template_contexts(self):
         return {
             'toolbar': summernote_config['toolbar'],
+            'colors': summernote_config['colors'],
             'lang': _get_proper_language(),
             'airMode': summernote_config['airMode'],
             'styleWithSpan': summernote_config['styleWithSpan'],
