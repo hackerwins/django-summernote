@@ -33,11 +33,11 @@ def _get_proper_language():
 class SummernoteWidgetBase(forms.Textarea):
     def template_contexts(self):
         return {
-            'toolbar': summernote_config['toolbar'],
+            'toolbar': self.attrs.get('toolbar', summernote_config['toolbar']),
             'lang': _get_proper_language(),
-            'airMode': summernote_config['airMode'],
-            'styleWithSpan': summernote_config['styleWithSpan'],
-            'direction': summernote_config['direction'],
+            'airMode': self.attrs.get('airMode', summernote_config['airMode']),
+            'styleWithSpan': self.attrs.get('styleWithSpan', summernote_config['styleWithSpan']),
+            'direction': self.attrs.get('direction', summernote_config['direction']),
             'width': self.attrs.get('width', summernote_config['width']),
             'height': self.attrs.get('height', summernote_config['height']),
             'url': {
