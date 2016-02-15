@@ -1,5 +1,11 @@
 import json
 import os
+
+try:
+    import scrubber
+except ImportError:
+    scrubber = None
+
 from django import forms
 from django.core.urlresolvers import reverse
 from django.template import Context
@@ -59,10 +65,11 @@ class SummernoteWidget(SummernoteWidgetBase):
     def render(self, name, value, attrs=None):
         attrs_for_textarea = attrs.copy()
         attrs_for_textarea['hidden'] = 'true'
+        if scrubber:
+            value = scrubber.Scrubber(autolink=False).scrub(value)
         html = super(SummernoteWidget, self).render(name,
                                                     value,
                                                     attrs_for_textarea)
-
         final_attrs = self.build_attrs(attrs)
         del final_attrs['id']  # Use original attributes without id.
 
@@ -102,6 +109,8 @@ class SummernoteInplaceWidget(SummernoteWidgetBase):
         attrs_for_textarea = attrs.copy()
         attrs_for_textarea['hidden'] = 'true'
         attrs_for_textarea['id'] += '-textarea'
+        if scrubber:
+            value = scrubber.Scrubber(autolink=False).scrub(value)
         html = super(SummernoteInplaceWidget, self).render(name,
                                                            value,
                                                            attrs_for_textarea)
