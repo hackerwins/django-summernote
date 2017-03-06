@@ -5,7 +5,6 @@ $(function() {
     var {{ id }}_textarea = window.document.getElementById('{{ id_src }}-textarea');
     var {{ id }}_src = window.document.getElementById('{{ id_src }}');
     var {{ id }}_settings = {{ settings|safe }};
-    var csrftoken = getCookie('{{ CSRF_COOKIE_NAME }}');
 
     // include summernote language pack, synchronously
     if( {{ id }}_settings.lang != 'en-US' ) {
@@ -45,7 +44,7 @@ $(function() {
                 var jqXHR = imageInput.fileupload('send', 
                     {
                         files: files,
-                        formData: $.extend({csrfmiddlewaretoken: csrftoken}, attachmentData),
+                        formData: $.extend({csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()}, attachmentData),
                         url: {{ id }}_settings.url.upload_attachment,
                     })
                     .success(function (result, textStatus, jqXHR) {
@@ -70,21 +69,5 @@ $(function() {
         }
     }));
 
-    // See https://docs.djangoproject.com/en/dev/ref/contrib/csrf/#ajax
-    function getCookie(name) {
-        var cookieValue = null;
-        if (document.cookie && document.cookie != '') {
-            var cookies = document.cookie.split(';');
-            for (var i = 0; i < cookies.length; i++) {
-                var cookie = jQuery.trim(cookies[i]);
-                // Does this cookie string begin with the name we want?
-                if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
-            }
-        }
-        return cookieValue;
-    }
 });
 </script>
