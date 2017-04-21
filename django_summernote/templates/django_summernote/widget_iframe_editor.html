@@ -45,6 +45,9 @@
                     
                     nEditable.outerHeight(setHeight);
                     $(iframe).height(settings.height);
+                    $('body').on('keyup', '.note-editing-area textarea', function() {
+                        src.value = $("#summernote").summernote('code');
+                    });
                 },
                 onBlur: function() {
                     src.value = $("#summernote").summernote('code');
