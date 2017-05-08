@@ -1,7 +1,12 @@
 # -*- coding: utf-8 -*-
+import django
 from django.contrib.admin.sites import AdminSite
 from django.contrib.auth.models import User
-from django.core.urlresolvers import reverse
+if django.VERSION >= (2, 0):
+    from django.urls import reverse
+else:
+    from django.core.urlresolvers import reverse
+
 from django.test import TestCase, Client
 from django_summernote.settings import summernote_config, get_attachment_model
 from imp import reload

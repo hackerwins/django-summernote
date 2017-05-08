@@ -48,7 +48,6 @@ def _get_attachment_storage():
 
 
 class AbstractAttachment(models.Model):
-
     name = models.CharField(max_length=255, null=True, blank=True)
     file = models.FileField(
         upload_to=summernote_config['attachment_upload_to'],
@@ -64,5 +63,4 @@ class AbstractAttachment(models.Model):
 
 
 class Attachment(AbstractAttachment):
-
     pass

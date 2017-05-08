@@ -38,6 +38,10 @@ def upload_attachment(request):
     if not request.FILES.getlist('files'):
         return HttpResponseBadRequest(_('No files were requested'))
 
+    # remove unnecessary CSRF token, if found
+    kwargs = request.POST.copy()
+    kwargs.pop("csrfmiddlewaretoken", None)
+
     try:
         attachments = []
 
@@ -55,9 +59,6 @@ def upload_attachment(request):
                     _('File size exceeds the limit allowed and cannot be saved')
                 )
 
-            # remove unnecessary CSRF token, if found
-            request.POST.pop("csrfmiddlewaretoken", None)
-            kwargs = request.POST
             # calling save method with attachment parameters as kwargs
             attachment.save(**kwargs)
 

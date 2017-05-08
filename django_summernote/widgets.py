@@ -1,6 +1,10 @@
 import json
+import django
 from django import forms
-from django.core.urlresolvers import reverse
+if django.VERSION >= (2, 0):
+    from django.urls import reverse
+else:
+    from django.core.urlresolvers import reverse
 from django.template import Context
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
@@ -131,7 +135,7 @@ class SummernoteInplaceWidget(SummernoteWidgetBase):
                                                            attrs_for_textarea)
         html += render_to_string(
             'django_summernote/widget_inplace.html',
-            Context(dict({
+            {
                 'id': attrs['id'].replace('-', '_'),
                 'id_src': attrs['id'],
                 'value': value if value else '',
@@ -139,6 +143,6 @@ class SummernoteInplaceWidget(SummernoteWidgetBase):
                 'disable_upload': summernote_config['disable_upload'],
                 'STATIC_URL': settings.STATIC_URL,
                 'CSRF_COOKIE_NAME': settings.CSRF_COOKIE_NAME,
-            }))
+            }
         )
         return mark_safe(html)

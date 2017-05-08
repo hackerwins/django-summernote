@@ -1,3 +1,4 @@
+0.8.7 - Update summernote with 0.8.3 and fix compatibiliy issue for Django 1.11
 0.8.6 - Update with minor fixes
 0.8.5 - Bump summernote version
 0.8.4 - Support distinct js/css settings for each widget

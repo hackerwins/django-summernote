@@ -115,6 +115,7 @@ SETTINGS_DEFAULT = {
         static_url('django_summernote/jquery.iframe-transport.js'),
         static_url('django_summernote/jquery.fileupload.js'),
         static_url('django_summernote/summernote.min.js'),
+        static_url('django_summernote/ResizeSensor.js'),
     ),
     'css': (),
     'js': (),
