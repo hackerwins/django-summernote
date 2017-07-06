@@ -51,6 +51,18 @@ class DjangoSummernoteTest(TestCase):
         )
 
         assert 'summernote' in html
+    
+    def test_widget_inplace_with_ugettext_lazy(self):
+        from django_summernote.widgets import SummernoteInplaceWidget
+        from django.utils.translation import ugettext_lazy
+
+        widget = SummernoteInplaceWidget()
+        # Force an attribute to be an unevaluated __proxy__ type. This is how django handles string translations.
+        html = widget.render(
+            'foobar', 'lorem ipsum', attrs={'id': 'id_foobar', 'width': ugettext_lazy('100%')}
+        )
+
+        assert 'summernote' in html
 
     def test_form(self):
         from django import forms
