@@ -10,6 +10,12 @@ django-summernote
 ![django-summernote](https://raw.github.com/lqez/pastebin/master/img/django-summernote.png "Screenshot of django-summernote")
 
 
+파이콘 한국 2017 스프린터를 위한 안내서
+---------------------------------------
+
+django-summernote / summernote 스프린트를 파이콘 한국 2017에서 8/14-15일에 진행합니다.
+참가자 분들은 https://github.com/summernote/django-summernote/issues 에 pyconkr2017로 라벨링된 이슈부터 확인해 주시면 감사드리겠습니다.
+
 
 SETUP
 -----
