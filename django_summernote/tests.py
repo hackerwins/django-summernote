@@ -343,3 +343,14 @@ class DjangoSummernoteTest(TestCase):
             self.assertEqual(attachment.name, None)
             aa.save_model(None, attachment, None, None)
             self.assertEqual(attachment.name, os.path.basename(__file__))
+
+    def test_config_allow_blank_values(self):
+        from django_summernote.widgets import SummernoteWidget
+
+        summernote_config['tableClassName'] = ''
+
+        widget = SummernoteWidget()
+        html = widget.render(
+            'foobar', 'lorem ipsum', attrs={'id': 'id_foobar'}
+        )
+        assert '"tableClassName": ""' in html
