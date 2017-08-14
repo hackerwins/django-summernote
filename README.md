@@ -138,21 +138,21 @@ In settings.py,
         'attachment_model': 'my.custom.attachment.model', # must inherit 'django_summernote.AbstractAttachment'
 
         # Set common css/js media files
-        'external_css': (                                             
-            '//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css',      
-        ),                                                                          
-        'external_js': (                                              
-            '//code.jquery.com/jquery-1.9.1.min.js',                                
-            '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js',        
+        'external_css': (
+            '//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css',
+        ),
+        'external_js': (
+            '//code.jquery.com/jquery-1.9.1.min.js',
+            '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js',
         ),
         'internal_css': (
-            static_url('django_summernote/summernote.css'),
+            os.path.join(STATIC_URL, 'django_summernote/summernote.css'),
         ),
         'internal_js': (
-            static_url('django_summernote/jquery.ui.widget.js'),
-            static_url('django_summernote/jquery.iframe-transport.js'),
-            static_url('django_summernote/jquery.fileupload.js'),
-            static_url('django_summernote/summernote.min.js'),
+            os.path.join(STATIC_URL, 'django_summernote/jquery.ui.widget.js'),
+            os.path.join(STATIC_URL, 'django_summernote/jquery.iframe-transport.js'),
+            os.path.join(STATIC_URL, 'django_summernote/jquery.fileupload.js'),
+            os.path.join(STATIC_URL, 'django_summernote/summernote.min.js'),
         ),
 
         # You can add custom css/js for SummernoteWidget.
