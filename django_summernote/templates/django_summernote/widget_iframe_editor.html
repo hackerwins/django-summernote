@@ -84,8 +84,7 @@
                             formData: $.extend({csrfmiddlewaretoken: '{{ csrf_token }}'}, attachmentData),
                             url: settings.url.upload_attachment,
                         })
-                        .success(function (result, textStatus, jqXHR) {
-                            data = $.parseJSON(result);
+                        .success(function (data, textStatus, jqXHR) {
                             $.each(data.files, function (index, file) {
                                 sn.summernote("insertImage", file.url);
                             });
