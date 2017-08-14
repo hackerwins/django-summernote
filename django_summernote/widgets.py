@@ -63,10 +63,9 @@ class SummernoteWidgetBase(forms.Textarea):
         }
 
         for option in __summernote_options__:
-            contexts[option] = self.attrs.get(
-                option,
-                summernote_config.get(option)
-            )
+            v = self.attrs.get(option, summernote_config.get(option))
+            if v is not None:
+                contexts[option] = v
 
         return contexts
 
