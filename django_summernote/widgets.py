@@ -39,7 +39,6 @@ __summernote_options__ = [
     'tableClassName',
     'tabSize',
     'toolbar',
-
     'width',
     'height',
 ]
@@ -64,9 +63,10 @@ class SummernoteWidgetBase(forms.Textarea):
         }
 
         for option in __summernote_options__:
-            v = self.attrs.get(option, summernote_config.get(option))
-            if v:
-                contexts[option] = v
+            contexts[option] = self.attrs.get(
+                option,
+                summernote_config.get(option)
+            )
 
         return contexts
 
