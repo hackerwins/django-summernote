@@ -59,6 +59,7 @@ SETUP
 USAGE
 -----
 ## Django admin site
+### Apply summernote to all TextField in model
 In `admin.py`,
 
     from django_summernote.admin import SummernoteModelAdmin
@@ -69,6 +70,30 @@ In `admin.py`,
         ...
 
     admin.site.register(SomeModel, SomeModelAdmin)
+
+### Apply summernote to not all TextField in model
+Although `Post` model has several TextField, only `content` field will have `SummernoteWidget`.
+
+In `admin.py`,
+
+    from django import forms
+    from django.contrib import admin
+    from django_summernote.widgets import SummernoteWidget    
+    from .models import Post
+
+    class PostAdminForm(forms.ModelForm):
+        class Meta:
+            model = Post
+            widgets = {
+                'content': SummernoteWidget(),
+            }
+            fields = '__all__'   
+    
+    class PostAdmin(admin.ModelAdmin):
+        form = PostAdminForm
+        ...
+    
+    admin.site.register(Post, PostAdmin)
 
 ## Form
 In `forms`,
