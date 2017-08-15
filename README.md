@@ -37,12 +37,12 @@ SETUP
         ]
 
 4. Be sure to set proper `MEDIA_URL` for attachments.
-     - The following is example code:
+     - The following is an example test code:
      
            MEDIA_URL = '/media/'
            MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
     
-     - When debug option is enabled(```DEBUG=True```), don't forget to add urlpatterns as shown below:
+     - When debug option is enabled(```DEBUG=True```), DO NOT forget to add urlpatterns as shown below:
      
             from django.conf import settings
             from django.conf.urls.static import static
