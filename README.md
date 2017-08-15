@@ -37,7 +37,20 @@ SETUP
         ]
 
 4. Be sure to set proper `MEDIA_URL` for attachments.
-     - <https://docs.djangoproject.com/en/1.9/topics/files/>
+     - The following is example code:
+     
+           MEDIA_URL = '/media/'
+           MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+    
+     - When debug option is enabled(```DEBUG=True```), don't forget to add urlpatterns as shown below:
+     
+            from django.conf import settings
+            from django.conf.urls.static import static
+            
+            if settings.DEBUG:
+                urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+            
+     - Please, read the official document more in detail: <https://docs.djangoproject.com/en/1.11/topics/files/>
 
 5. Run database migration for preparing attachment model.
 
@@ -45,7 +58,7 @@ SETUP
 
 USAGE
 -----
-
+## Django admin site
 In `admin.py`,
 
     from django_summernote.admin import SummernoteModelAdmin
@@ -57,7 +70,8 @@ In `admin.py`,
 
     admin.site.register(SomeModel, SomeModelAdmin)
 
-Or, in `forms`,
+## Form
+In `forms`,
 
     from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 
