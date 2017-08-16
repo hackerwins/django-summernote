@@ -116,7 +116,7 @@ SETTINGS_DEFAULT = {
         static_url('django_summernote/django_summernote.css'),
     ),
     'default_js': (
-        '//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.js',
+        '//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js',
         '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
 
         # version = 9.18.0
