@@ -115,11 +115,13 @@ SETTINGS_DEFAULT = {
         static_url('django_summernote/django_summernote.css'),
     ),
     'default_js': (
-        '//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js',
+        '//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.js',
         '//netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js',
+
         static_url('django_summernote/jquery.ui.widget.js'),
         static_url('django_summernote/jquery.iframe-transport.js'),
         static_url('django_summernote/jquery.fileupload.js'),
+
         static_url('django_summernote/summernote.min.js'),
         static_url('django_summernote/ResizeSensor.js'),
     ),
