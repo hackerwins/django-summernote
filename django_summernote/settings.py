@@ -1,6 +1,7 @@
 import os
 import uuid
 from datetime import datetime
+
 from django.apps import apps as django_apps
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
@@ -33,7 +34,8 @@ def get_attachment_model():
         raise ImproperlyConfigured("SUMMERNOTE_CONFIG['attachment_model'] must be of the form 'app_label.model_name'")
     except LookupError:
         raise ImproperlyConfigured(
-            "SUMMERNOTE_CONFIG['attachment_model'] refers to model '%s' that has not been installed" % summernote_config["attachment_model"]
+            "SUMMERNOTE_CONFIG['attachment_model'] refers to model '%s' that has not been installed" %
+            summernote_config["attachment_model"]
         )
 
 
@@ -109,17 +111,21 @@ SETTINGS_DEFAULT = {
     'attachment_require_authentication': False,
     'attachment_model': 'django_summernote.Attachment',
 
-    'default_css': (
+    # Bootstrap and jQuery for iframe
+    'base_css': (
         '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
+    ),
+    'base_js': (
+        '//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js',
+        '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
+    ),
 
+    # Summernote(0.8.7) and jQuery File Upload(9.18.0)
+    'summernote_css': (
         static_url('django_summernote/summernote.css'),
         static_url('django_summernote/django_summernote.css'),
     ),
-    'default_js': (
-        '//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js',
-        '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
-
-        # version = 9.18.0
+    'summernote_js': (
         static_url('django_summernote/jquery.ui.widget.min.js'),
         static_url('django_summernote/jquery.iframe-transport.min.js'),
         static_url('django_summernote/jquery.fileupload.min.js'),
@@ -127,24 +133,15 @@ SETTINGS_DEFAULT = {
         static_url('django_summernote/summernote.min.js'),
         static_url('django_summernote/ResizeSensor.js'),
     ),
+
+    # Custom CSS/JS for SummernoteWidget (iframe)
     'css': (),
     'js': (),
 
-    'default_css_for_inplace': (
-        static_url('django_summernote/summernote.css'),
-        static_url('django_summernote/django_summernote_inplace.css'),
-    ),
-    'default_js_for_inplace': (
-        # version = 9.18.0
-        static_url('django_summernote/jquery.ui.widget.min.js'),
-        static_url('django_summernote/jquery.iframe-transport.min.js'),
-        static_url('django_summernote/jquery.fileupload.min.js'),
-
-        static_url('django_summernote/summernote.min.js'),
-        static_url('django_summernote/ResizeSensor.js'),
-    ),
+    # Custom CSS/JS for SummernoteInplaceWidget
     'css_for_inplace': (),
     'js_for_inplace': (),
+
     # Disable upload
     'disable_upload': False,
 }
