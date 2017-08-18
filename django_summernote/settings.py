@@ -116,7 +116,7 @@ SETTINGS_DEFAULT = {
         '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
     ),
     'base_js': (
-        '//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js',
+        '//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js',
         '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
     ),
 
