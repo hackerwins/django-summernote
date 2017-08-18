@@ -1,6 +1,7 @@
-from django.db import models
-from django.core.files.storage import default_storage
 from django.core.exceptions import ImproperlyConfigured
+from django.core.files.storage import default_storage
+from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 try:
     from importlib import import_module
@@ -8,7 +9,6 @@ except ImportError:
     from django.utils.importlib import import_module
 
 from django_summernote.settings import summernote_config
-
 
 __all__ = ['AbstractAttachment', 'Attachment', ]
 
@@ -47,12 +47,22 @@ def _get_attachment_storage():
 
 
 class AbstractAttachment(models.Model):
-    name = models.CharField(max_length=255, null=True, blank=True, help_text="Defaults to filename, if left blank")
+    name = models.CharField(
+        verbose_name=_('Name'),
+        max_length=255,
+        null=True,
+        blank=True,
+        help_text=_("Defaults to filename, if left blank")
+    )
     file = models.FileField(
+        verbose_name=_('File'),
         upload_to=summernote_config['attachment_upload_to'],
         storage=_get_attachment_storage()
     )
-    uploaded = models.DateTimeField(auto_now_add=True)
+    uploaded = models.DateTimeField(
+        verbose_name=_('Uploaded'),
+        auto_now_add=True
+    )
 
     def __unicode__(self):
         return u"%s" % (self.name)
@@ -62,5 +72,6 @@ class AbstractAttachment(models.Model):
 
 
 class Attachment(AbstractAttachment):
-    pass
-
+    class Meta:
+        verbose_name = _('Attachment')
+        verbose_name_plural = _('Attachments')

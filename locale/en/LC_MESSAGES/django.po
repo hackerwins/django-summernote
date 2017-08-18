@@ -1,0 +1,66 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-18 15:06+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: django-summernote/django_summernote/apps.py:7
+msgid "Django Summernote"
+msgstr "Django Summernote"
+
+#: django-summernote/django_summernote/models.py:51
+msgid "Name"
+msgstr "Name"
+
+#: django-summernote/django_summernote/models.py:55
+msgid "Defaults to filename, if left blank"
+msgstr "Defaults to filename, if left blank"
+
+#: django-summernote/django_summernote/models.py:58
+msgid "File"
+msgstr "File"
+
+#: django-summernote/django_summernote/models.py:63
+msgid "Uploaded"
+msgstr "Uploaded"
+
+#: django-summernote/django_summernote/views.py:34
+msgid "Only POST method is allowed"
+msgstr "Only POST method is allowed"
+
+#: django-summernote/django_summernote/views.py:41
+msgid "Only authenticated users are allowed"
+msgstr "Only authenticated users are allowed"
+
+#: django-summernote/django_summernote/views.py:47
+msgid "No files were requested"
+msgstr "No files were requested"
+
+#: django-summernote/django_summernote/views.py:69
+msgid "File size exceeds the limit allowed and cannot be saved"
+msgstr "File size exceeds the limit allowed and cannot be saved"
+
+#: django-summernote/django_summernote/views.py:82
+msgid "Failed to save attachment"
+msgstr "Failed to save attachment"
+
+#: django-summernote/django_summernote/models.py:76
+msgid "Attachment"
+msgstr "Attachment"
+
+#: django-summernote/django_summernote/models.py:77
+msgid "Attachments"
+msgstr "Attachments"
