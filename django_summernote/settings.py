@@ -110,13 +110,13 @@ SETTINGS_DEFAULT = {
     'attachment_model': 'django_summernote.Attachment',
 
     'default_css': (
-        '//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css',
+        '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
         static_url('django_summernote/summernote.css'),
         static_url('django_summernote/django_summernote.css'),
     ),
     'default_js': (
-        '//code.jquery.com/jquery-1.9.1.min.js',
-        '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js',
+        '//code.jquery.com/jquery-3.2.1.min.js',
+        '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
         static_url('django_summernote/jquery.ui.widget.js'),
         static_url('django_summernote/jquery.iframe-transport.js'),
         static_url('django_summernote/jquery.fileupload.js'),
