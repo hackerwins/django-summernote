@@ -84,13 +84,12 @@
                             formData: $.extend({csrfmiddlewaretoken: '{{ csrf_token }}'}, attachmentData),
                             url: settings.url.upload_attachment,
                         })
-                        .success(function (result, textStatus, jqXHR) {
-                            data = $.parseJSON(result);
+                        .done(function (data, textStatus, jqXHR) {
                             $.each(data.files, function (index, file) {
                                 sn.summernote("insertImage", file.url);
                             });
                         })
-                        .error(function (jqXHR, textStatus, errorThrown) {
+                        .fail(function (jqXHR, textStatus, errorThrown) {
                             // if the error message from the server has any text in it, show it
                             var msg = jqXHR.responseText;
                             if (msg.length > 0) {
