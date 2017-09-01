@@ -127,10 +127,13 @@ SETTINGS_DEFAULT = {
     'js': (),
 
     'default_css_for_inplace': (
+        '//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css',
         static_url('django_summernote/summernote.css'),
         static_url('django_summernote/django_summernote_inplace.css'),
     ),
     'default_js_for_inplace': (
+        '//code.jquery.com/jquery-1.9.1.min.js',
+        '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js',
         static_url('django_summernote/jquery.ui.widget.js'),
         static_url('django_summernote/jquery.iframe-transport.js'),
         static_url('django_summernote/jquery.fileupload.js'),
