@@ -45,6 +45,12 @@
         $('#summernote').summernote($.extend(settings, {
             callbacks: {
                 onInit: function() {
+                    // Copy content from code view
+                    $('body').on('keyup', '.note-editing-area textarea', function() {
+                        src.value = $("#summernote").summernote('code');
+                    });
+
+                    // Set proper height
                     $(iframe).height(settings.height);
                     recalcHeight();
 
