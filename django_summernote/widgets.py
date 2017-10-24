@@ -59,12 +59,13 @@ class SummernoteWidgetBase(forms.Textarea):
         contexts = {
             'lang': lang,
             'url': {
-                'language':
-                    static('django_summernote/lang/summernote-' + lang + '.min.js'),
                 'upload_attachment':
                     reverse('django_summernote-upload_attachment'),
             },
         }
+
+        if lang != 'en-US':
+            contexts['url']['language'] = static('django_summernote/lang/summernote-' + lang + '.min.js')
 
         for option in __summernote_options__:
             v = self.attrs.get(option, summernote_config.get(option))
