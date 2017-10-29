@@ -1,5 +1,7 @@
 import json
+
 from django import forms
+
 try:
     # Django >= 2.0
     from django.urls import reverse
@@ -9,6 +11,7 @@ from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language
+
 try:
     # Django >= 1.7
     from django.forms.utils import flatatt
@@ -125,19 +128,24 @@ class SummernoteWidget(SummernoteWidgetBase):
 
 
 class SummernoteInplaceWidget(SummernoteWidgetBase):
-    class Media:
-        css = {
-            'all': (
-                (summernote_config['codemirror_css'] if 'codemirror' in summernote_config else ()) +
-                summernote_config['default_css'] +
-                summernote_config['css_for_inplace']
-            )
-        }
+    @property
+    def media(self):
+        summernote_config['default_css'] = tuple(static(x) for x in summernote_config['default_css'])
+        summernote_config['default_js'] = tuple(static(x) for x in summernote_config['default_js'])
 
-        js = (
-            (summernote_config['codemirror_js'] if 'codemirror' in summernote_config else ()) +
-            summernote_config['default_js'] +
-            summernote_config['js_for_inplace']
+        return forms.Media(
+            css={
+                'all': (
+                    (summernote_config['codemirror_css'] if 'codemirror' in summernote_config else ()) +
+                    summernote_config['default_css'] +
+                    summernote_config['css_for_inplace']
+                )
+            },
+            js=(
+                (summernote_config['codemirror_js'] if 'codemirror' in summernote_config else ()) +
+                summernote_config['default_js'] +
+                summernote_config['js_for_inplace']
+            )
         )
 
     def render(self, name, value, attrs=None):

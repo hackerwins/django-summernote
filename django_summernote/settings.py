@@ -1,9 +1,9 @@
 import os
 import uuid
 from datetime import datetime
+
 from django.apps import apps as django_apps
 from django.conf import settings
-from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.core.exceptions import ImproperlyConfigured
 
 
@@ -126,15 +126,15 @@ SETTINGS_DEFAULT = {
     ),
 
     'default_css': (
-        static('django_summernote/summernote.css'),
-        static('django_summernote/django_summernote.css'),
+        'django_summernote/summernote.css',
+        'django_summernote/django_summernote.css',
     ),
     'default_js': (
-        static('django_summernote/jquery.ui.widget.js'),
-        static('django_summernote/jquery.iframe-transport.js'),
-        static('django_summernote/jquery.fileupload.js'),
-        static('django_summernote/summernote.min.js'),
-        static('django_summernote/ResizeSensor.js'),
+        'django_summernote/jquery.ui.widget.js',
+        'django_summernote/jquery.iframe-transport.js',
+        'django_summernote/jquery.fileupload.js',
+        'django_summernote/summernote.min.js',
+        'django_summernote/ResizeSensor.js',
     ),
 
     'css': (),

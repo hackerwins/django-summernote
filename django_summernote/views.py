@@ -2,19 +2,20 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext as _
+
 from django_summernote.settings import summernote_config, get_attachment_model
 
 
 def editor(request, id):
     css = summernote_config['base_css'] \
-        + (summernote_config['codemirror_css'] if 'codemirror' in summernote_config else ()) \
-        + summernote_config['default_css'] \
-        + summernote_config['css']
+          + (summernote_config['codemirror_css'] if 'codemirror' in summernote_config else ()) \
+          + summernote_config['default_css'] \
+          + summernote_config['css']
 
     js = summernote_config['base_js'] \
-        + (summernote_config['codemirror_js'] if 'codemirror' in summernote_config else ()) \
-        + summernote_config['default_js'] \
-        + summernote_config['js']
+         + (summernote_config['codemirror_js'] if 'codemirror' in summernote_config else ()) \
+         + summernote_config['default_js'] \
+         + summernote_config['js']
 
     return render(
         request,
