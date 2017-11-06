@@ -60,7 +60,7 @@ class SummernoteWidgetBase(forms.Textarea):
             'lang': lang,
             'url': {
                 'language':
-                    static('django_summernote/lang/summernote-' + lang + '.min.js'),
+                    static('summernote/lang/summernote-' + lang + '.min.js'),
                 'upload_attachment':
                     reverse('django_summernote-upload_attachment'),
             },
