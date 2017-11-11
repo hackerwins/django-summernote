@@ -208,7 +208,7 @@ In settings.py,
         # If any codemirror settings are defined, it will include codemirror files automatically.
         'css': {
             '//cdnjs.cloudflare.com/ajax/libs/codemirror/5.29.0/theme/monokai.min.css',
-        }
+        },
         'codemirror': {
             'mode': 'htmlmixed',
             'lineNumbers': 'true',
@@ -227,7 +227,7 @@ In settings.py,
         'js': {
             '/some_static_folder/summernote-ext-print.js',
             '//somewhere_in_internet/summernote-plugin-name.js',
-        }
+        },
         # You can also add custom settings in `summernote` section.
         'summernote': {
             'print': {
