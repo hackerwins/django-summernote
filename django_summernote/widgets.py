@@ -124,9 +124,6 @@ class SummernoteWidget(SummernoteWidgetBase):
 class SummernoteInplaceWidget(SummernoteWidgetBase):
     @property
     def media(self):
-        summernote_config['default_css'] = tuple(static(x) for x in summernote_config['default_css'])
-        summernote_config['default_js'] = tuple(static(x) for x in summernote_config['default_js'])
-
         return forms.Media(
             css={
                 'all': (
