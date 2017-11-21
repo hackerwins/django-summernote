@@ -2,11 +2,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.core.files.storage import default_storage
 from django.core.exceptions import ImproperlyConfigured
-
-try:
-    from importlib import import_module
-except ImportError:
-    from django.utils.importlib import import_module
+from importlib import import_module
 
 from django_summernote.settings import summernote_config
 
