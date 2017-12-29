@@ -3,7 +3,12 @@ from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.http import HttpResponse, JsonResponse
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext as _
-from django.views import View
+
+if django.VERSION <= (1, 9):
+    from django.views.generic import View
+else:
+    from django.views import View
+
 from django.views.generic import TemplateView
 
 from django_summernote.settings import summernote_config, get_attachment_model
