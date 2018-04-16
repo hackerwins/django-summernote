@@ -1,4 +1,5 @@
-0.8.8.6 - A lot of internal code changes 
+0.8.8.7 - Added ability to have widget-specific Summernote JS option overrides
+0.8.8.6 - A lot of internal code changes
 0.8.8.5 - Now we're supporting Django 2.0
 0.8.8.4 - Hotfix for handling static files
 0.8.8.3 - Fix a migration issue and minor bugs
