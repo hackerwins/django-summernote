@@ -143,9 +143,6 @@ SETTINGS_DEFAULT = {
     'css_for_inplace': (),
     'js_for_inplace': (),
 
-    # Disable upload
-    'disable_upload': False,
-
     # For lazy loading (inplace widget only)
     'lazy': False,
 }

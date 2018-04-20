@@ -40,7 +40,6 @@ class SummernoteEditor(TemplateView):
         context['id'] = self.kwargs['id'].replace('-', '_')
         context['css'] = self.css
         context['js'] = self.js
-        context['disable_upload'] = summernote_config['disable_upload']
         context['jquery'] = summernote_config['jquery']
 
         return context

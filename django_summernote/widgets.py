@@ -115,6 +115,10 @@ class SummernoteWidget(SummernoteWidgetBase):
         del final_attrs['id']  # Use original attributes without id.
 
         contexts = self.template_contexts()
+        # backward-compatible setting deprecation; disable
+        # via `summmernote` dict setting instead
+        if 'disable_upload' in summernote_config:
+            contexts['disableDragAndDrop'] = summernote_config['disable_upload']
 
         url = reverse('django_summernote-editor',
                       kwargs={'id': attrs['id']})
@@ -160,6 +164,12 @@ class SummernoteInplaceWidget(SummernoteWidgetBase):
         final_attrs = self.build_attrs(attrs)
         del final_attrs['id']  # Use original attributes without id.
 
+        contexts = self.template_contexts()
+        # backward-compatible setting deprecation; disable
+        # via `summmernote` dict setting instead
+        if 'disable_upload' in summernote_config:
+            contexts['disableDragAndDrop'] = summernote_config['disable_upload']
+
         html += render_to_string(
             'django_summernote/widget_inplace.html',
             {
@@ -168,8 +178,7 @@ class SummernoteInplaceWidget(SummernoteWidgetBase):
                 'attrs': flatatt(final_attrs),
                 'jquery': summernote_config['jquery'],
                 'value': value if value else '',
-                'settings': json.dumps(self.template_contexts()),
-                'disable_upload': attrs.get('disable_upload', summernote_config['disable_upload']),
+                'settings': json.dumps(contexts),
                 'lazy': attrs.get('lazy', summernote_config['lazy']),
                 'CSRF_COOKIE_NAME': settings.CSRF_COOKIE_NAME,
             }
