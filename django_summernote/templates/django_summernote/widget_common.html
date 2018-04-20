@@ -73,8 +73,7 @@ function initSummernote_{{ id }}() {
                     onBlur: function() {
                         origin.value = $sn.summernote('code');
                     },
-                    {% if not disable_upload %}
-                    onImageUpload: function(files) {
+                    onImageUpload: settings.disableDragAndDrop ? null : function(files) {
                         // custom attachment data
                         var attachmentData = origin.dataset;
                         $nImageInput.fileupload();
@@ -101,7 +100,6 @@ function initSummernote_{{ id }}() {
                                 }
                             });
                     }
-                    {% endif %}
                 }
             }));
         };
