@@ -189,9 +189,6 @@ In settings.py,
         'js_for_inplace': (
         ),
 
-        # You can disable file upload feature.
-        'disable_upload': False,
-
         # Codemirror as codeview
         # If any codemirror settings are defined, it will include codemirror files automatically.
         'css': {
@@ -216,8 +213,10 @@ In settings.py,
             '/some_static_folder/summernote-ext-print.js',
             '//somewhere_in_internet/summernote-plugin-name.js',
         },
-        # You can also add custom settings in `summernote` section.
+        # You can also add custom Summernote JS settings in `summernote` section.
+        # Disable file upload feature here.
         'summernote': {
+            'disableDragAndDrop': False,
             'print': {
                 'stylesheetUrl': '/some_static_folder/printable.css',
             },
@@ -241,6 +240,17 @@ You can also pass additional parameters to custom `Attachment` model by adding a
     # Pass additional parameters to Attachment via attributes
     class SomeForm(forms.Form):
         foo = forms.CharField(widget=SummernoteWidget(attrs={'data-user-id': 123456, 'data-device': 'iphone'}))
+
+You can override Summernote JS custom options from `SUMMERNOTE_CONFIG` for each widget as well:
+
+    # Optionally set/override Summernote JS options for each widget
+    class SomeForm(forms.Form):
+        foo = forms.CharField(widget=SummernoteWidget(attrs={
+            'summernote': {
+                'disableDragAndDrop': True
+            }
+        }))
+
 
 LIMITATIONS
 -----------
