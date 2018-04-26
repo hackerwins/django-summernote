@@ -52,19 +52,6 @@ class DjangoSummernoteTest(TestCase):
 
         assert 'summernote' in html
 
-    def test_widget_inplace_with_ugettext_lazy(self):
-        from django_summernote.widgets import SummernoteInplaceWidget
-        from django.utils.translation import ugettext_lazy
-        from django_summernote.widgets import __summernote_options__
-
-        widget = SummernoteInplaceWidget()
-        # Force an attribute to be an unevaluated __proxy__ type. This is how django handles string translations.
-        html = widget.render(
-            'foobar', 'lorem ipsum', attrs={x: ugettext_lazy('yada') for x in ['id'] + __summernote_options__}
-        )
-
-        assert 'summernote' in html
-
     def test_form(self):
         from django import forms
         from django_summernote.widgets import SummernoteWidget
@@ -290,20 +277,19 @@ class DjangoSummernoteTest(TestCase):
             self.assertEqual(res['files'][0]['size'], size)
 
     def test_lang_specified(self):
-        old_lang = summernote_config['lang']
-        summernote_config['lang'] = 'ko-KR'
+        old_lang = summernote_config['summernote']['lang']
+        summernote_config['summernote']['lang'] = 'ko-KR'
 
         from django_summernote import widgets
         widget = widgets.SummernoteInplaceWidget()
         html = widget.render(
             'foobar', 'lorem ipsum', attrs={'id': 'id_foobar'}
         )
-        summernote_config['lang'] = old_lang
+        summernote_config['summernote']['lang'] = old_lang
 
         assert '"lang": "ko-KR"' in html
 
     def test_lang_accept_language(self):
-
         from django.utils.translation import activate
         activate('fr')
 
@@ -360,10 +346,44 @@ class DjangoSummernoteTest(TestCase):
     def test_config_allow_blank_values(self):
         from django_summernote.widgets import SummernoteWidget
 
-        summernote_config['tableClassName'] = ''
+        summernote_config['summernote']['tableClassName'] = ''
 
         widget = SummernoteWidget()
         html = widget.render(
             'foobar', 'lorem ipsum', attrs={'id': 'id_foobar'}
         )
         assert '"tableClassName": ""' in html
+
+    def test_widgets_with_attributes(self):
+        from django_summernote.widgets import (SummernoteWidget, SummernoteInplaceWidget)
+
+        widget = SummernoteInplaceWidget(attrs={'class': 'special'})
+        html = widget.render(
+            'foobar', 'lorem ipsum', attrs={'id': 'id_foobar'}
+        )
+
+        assert 'class="special"' in html
+
+        widget = SummernoteWidget(attrs={'class': 'special'})
+        html = widget.render(
+            'foobar', 'lorem ipsum', attrs={'id': 'id_foobar'}
+        )
+
+        assert 'class="special"' in html
+
+    def test_widgets_with_adhoc_settings(self):
+        from django_summernote.widgets import (SummernoteWidget, SummernoteInplaceWidget)
+
+        widget = SummernoteInplaceWidget(attrs={'summernote': {'toolbar': [['font', ['bold']]]}})
+        html = widget.render(
+            'foobar', 'lorem ipsum', attrs={'id': 'id_foobar'}
+        )
+
+        assert '"toolbar": [["font", ["bold"]]]' in html
+
+        widget = SummernoteWidget(attrs={'summernote': {'toolbar': [['font', ['italic']]]}})
+        html = widget.render(
+            'foobar', 'lorem ipsum', attrs={'id': 'id_foobar'}
+        )
+
+        assert '"toolbar": [["font", ["italic"]]]' in html

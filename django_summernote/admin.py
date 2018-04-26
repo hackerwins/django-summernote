@@ -7,8 +7,7 @@ from django_summernote.settings import summernote_config, get_attachment_model
 
 class SummernoteModelAdminMixin(object):
     summernote_fields = '__all__'
-    summernote_widget = SummernoteWidget if summernote_config['iframe'] \
-                        else SummernoteInplaceWidget
+    summernote_widget = SummernoteWidget if summernote_config['iframe'] else SummernoteInplaceWidget
 
     def formfield_for_dbfield(self, db_field, *args, **kwargs):
         if self.summernote_fields == '__all__':

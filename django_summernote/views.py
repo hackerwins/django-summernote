@@ -3,15 +3,12 @@ from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.http import HttpResponse, JsonResponse
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext as _
-
+from django.views.generic import TemplateView
+from django_summernote.settings import summernote_config, get_attachment_model
 if django.VERSION <= (1, 9):
     from django.views.generic import View
 else:
     from django.views import View
-
-from django.views.generic import TemplateView
-
-from django_summernote.settings import summernote_config, get_attachment_model
 
 
 class SummernoteEditor(TemplateView):
@@ -23,15 +20,17 @@ class SummernoteEditor(TemplateView):
         static_default_css = tuple(static(x) for x in summernote_config['default_css'])
         static_default_js = tuple(static(x) for x in summernote_config['default_js'])
 
-        self.css = summernote_config['base_css'] \
-                   + (summernote_config['codemirror_css'] if 'codemirror' in summernote_config else ()) \
-                   + static_default_css \
-                   + summernote_config['css']
+        self.css = \
+            summernote_config['base_css'] \
+            + (summernote_config['codemirror_css'] if 'codemirror' in summernote_config else ()) \
+            + static_default_css \
+            + summernote_config['css']
 
-        self.js = summernote_config['base_js'] \
-                  + (summernote_config['codemirror_js'] if 'codemirror' in summernote_config else ()) \
-                  + static_default_js \
-                  + summernote_config['js']
+        self.js = \
+            summernote_config['base_js'] \
+            + (summernote_config['codemirror_js'] if 'codemirror' in summernote_config else ()) \
+            + static_default_js \
+            + summernote_config['js']
 
     def get_context_data(self, **kwargs):
         context = super(SummernoteEditor, self).get_context_data(**kwargs)
@@ -40,8 +39,7 @@ class SummernoteEditor(TemplateView):
         context['id'] = self.kwargs['id'].replace('-', '_')
         context['css'] = self.css
         context['js'] = self.js
-        context['disable_upload'] = summernote_config['disable_upload']
-        context['jquery'] = summernote_config['jquery']
+        context['config'] = summernote_config
 
         return context
 
@@ -59,7 +57,7 @@ class SummernoteUploadAttachment(View):
     def post(self, request, *args, **kwargs):
         authenticated = \
             request.user.is_authenticated if django.VERSION >= (1, 10) \
-                else request.user.is_authenticated()
+            else request.user.is_authenticated()
 
         if summernote_config['attachment_require_authentication'] and \
                 not authenticated:

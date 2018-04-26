@@ -7,11 +7,11 @@ from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 class SampleForm(forms.Form):
     desc1 = forms.CharField(
         label='iframe',
-        widget=SummernoteWidget()
+        widget=SummernoteWidget(attrs={'summernote': {'toolbar': [['font', ['italic']]]}})
     )
     desc2 = forms.CharField(
         label='in place',
-        widget=SummernoteInplaceWidget()
+        widget=SummernoteInplaceWidget(attrs={'data-user-id': 123456, 'data-device': 'iphone'})
     )
 
 

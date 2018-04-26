@@ -118,32 +118,27 @@ In settings.py,
         # Using SummernoteWidget - iframe mode
         'iframe': True,  # or set False to use SummernoteInplaceWidget - no iframe mode
 
-        # Using Summernote Air-mode
-        'airMode': False,
+        # You can put custom Summernote settings
+        'summernote': {
+            # As an example, using Summernote Air-mode
+            'airMode': False,
 
-        # Use native HTML tags (`<b>`, `<i>`, ...) instead of style attributes
-        'styleWithSpan': False,
+            # Change editor size
+            'width': '100%',
+            'height': '480',
 
-        # Set text direction : 'left to right' is default.
-        'direction': 'ltr',
+            # Use proper language setting automatically (default)
+            'lang': None,
 
-        # Change editor size
-        'width': '100%',
-        'height': '480',
+            # Or, set editor language/locale forcely
+            'lang': 'ko-KR',
+            ...
 
-        # Use proper language setting automatically (default)
-        'lang': None,
-
-        # Or, set editor language/locale forcely
-        'lang': 'ko-KR',
-
-        # Customize toolbar buttons
-        'toolbar': [
-            ['style', ['style']],
-            ['style', ['bold', 'italic', 'underline', 'clear']],
-            ['para', ['ul', 'ol', 'height']],
-            ['insert', ['link']],
-        ],
+            # You can also add custom settings for external plugins
+            'print': {
+                'stylesheetUrl': '/some_static_folder/printable.css',
+            },
+        },
 
         # Need authentication while uploading attachments.
         'attachment_require_authentication': True,
@@ -157,24 +152,8 @@ In settings.py,
         # Set custom model for attachments (default: 'django_summernote.Attachment')
         'attachment_model': 'my.custom.attachment.model', # must inherit 'django_summernote.AbstractAttachment'
 
-        # Set common css/js media files
-        'base_css': (
-            '//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css',
-        ),
-        'base_js': (
-            '//code.jquery.com/jquery-1.9.1.min.js',
-            '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js',
-        ),
-        'default_css': (
-            os.path.join(STATIC_URL, 'django_summernote/summernote.css'),
-            os.path.join(STATIC_URL, 'django_summernote/django_summernote.css'),
-        ),
-        'default_js': (
-            os.path.join(STATIC_URL, 'django_summernote/jquery.ui.widget.js'),
-            os.path.join(STATIC_URL, 'django_summernote/jquery.iframe-transport.js'),
-            os.path.join(STATIC_URL, 'django_summernote/jquery.fileupload.js'),
-            os.path.join(STATIC_URL, 'django_summernote/summernote.min.js'),
-        ),
+        # You can disable attachment feature.
+        'disable_attachment': False,
 
         # You can add custom css/js for SummernoteWidget.
         'css': (
@@ -188,9 +167,6 @@ In settings.py,
         ),
         'js_for_inplace': (
         ),
-
-        # You can disable file upload feature.
-        'disable_upload': False,
 
         # Codemirror as codeview
         # If any codemirror settings are defined, it will include codemirror files automatically.
@@ -216,12 +192,6 @@ In settings.py,
             '/some_static_folder/summernote-ext-print.js',
             '//somewhere_in_internet/summernote-plugin-name.js',
         },
-        # You can also add custom settings in `summernote` section.
-        'summernote': {
-            'print': {
-                'stylesheetUrl': '/some_static_folder/printable.css',
-            },
-        }
     }
 
   - There are pre-defined css/js files for widgets.

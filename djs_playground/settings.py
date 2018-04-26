@@ -122,8 +122,10 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'djs_playground/media/')
 
 SUMMERNOTE_CONFIG = {
-    'width': '100%',
-    'height': '200px',
+    'summernote': {
+        'width': '100%',
+        'height': '200px',
+    },
     'css': (
         '//cdnjs.cloudflare.com/ajax/libs/codemirror/5.29.0/theme/base16-dark.min.css',
     ),
@@ -135,5 +137,5 @@ SUMMERNOTE_CONFIG = {
         'mode': 'htmlmixed',
         'lineNumbers': 'true',
     },
-    'lazy': True,
+    'lazy': False,
 }

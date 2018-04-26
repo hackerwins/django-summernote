@@ -1,7 +1,7 @@
 {% load staticfiles %}
 <script>
 function initSummernote_{{ id }}() {
-    {{ jquery }}(document).ready(function($) {
+    {{ config.jquery }}(document).ready(function($) {
 {% if iframe %}
         var iframe = window.parent.document.getElementById('{{ id }}_iframe');
         var origin = window.parent.document.getElementById('{{ id_src }}');
@@ -73,7 +73,7 @@ function initSummernote_{{ id }}() {
                     onBlur: function() {
                         origin.value = $sn.summernote('code');
                     },
-                    {% if not disable_upload %}
+                    {% if not config.disable_attachment %}
                     onImageUpload: function(files) {
                         // custom attachment data
                         var attachmentData = origin.dataset;
@@ -143,7 +143,7 @@ function initSummernote_{{ id }}() {
 {% endif %}
     });
 }
-{% if not lazy %}
+{% if not config.lazy %}
 initSummernote_{{ id }}();
 {% endif %}
 </script>
