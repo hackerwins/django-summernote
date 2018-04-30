@@ -168,14 +168,23 @@ SETTINGS_DEFAULT = {
 summernote_config = SETTINGS_DEFAULT.copy()
 summernote_config.update(SETTINGS_USER)
 
-# NOTE: Will be deprecated from 0.9
-# Copying old-style setting for backword-compatibility
-DEPRECATED_SUMMERNOTE_CONFIGS = (
-    'width',
-    'height',
-    'lang',
-    'toolbar',
-)
-for key in DEPRECATED_SUMMERNOTE_CONFIGS:
-    if SETTINGS_USER.get(key):
-        summernote_config['summernote'][key] = SETTINGS_USER.get(key)
+
+def merge_configs():
+    """
+    NOTE: Will be deprecated from 0.9
+    Copying old-style settings for backword-compatibility
+    """
+    DEPRECATED_SUMMERNOTE_CONFIGS = (
+        'width',
+        'height',
+        'lang',
+        'toolbar',
+    )
+    for key in DEPRECATED_SUMMERNOTE_CONFIGS:
+        if SETTINGS_USER.get(key):
+            summernote_config['summernote'][key] = SETTINGS_USER.get(key)
+        if not summernote_config['summernote'].get(key):
+            summernote_config['summernote'][key] = SETTINGS_DEFAULT['summernote'].get(key)
+
+
+merge_configs()

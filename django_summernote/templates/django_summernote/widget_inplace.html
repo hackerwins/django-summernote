@@ -1,13 +1,17 @@
 <div id='{{ id_src }}'>{{ value|safe }}</div>
 {% include "django_summernote/widget_common.html" with iframe=False %}
 <script>
-if( __summernotes__ === undefined ) { 
-    var __summernotes__ = new Array();
-    function initSummernote() {
-        for (i = 0, l = __summernotes__.length; i < l; ++i) {
-            __summernotes__[i]();
+{% if config.lazy %}
+    if( __summernotes__ === undefined ) {
+        var __summernotes__ = new Array();
+        function initSummernote() {
+            for (i = 0, l = __summernotes__.length; i < l; ++i) {
+                __summernotes__[i]();
+            }
         }
     }
-}
-__summernotes__.push(initSummernote_{{ id }});
+    __summernotes__.push(initSummernote_{{ id }});
+{% else %}
+    initSummernote_{{ id }}();
+{% endif %}
 </script>
