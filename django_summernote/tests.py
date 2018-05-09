@@ -387,3 +387,33 @@ class DjangoSummernoteTest(TestCase):
         )
 
         assert '"toolbar": [["font", ["italic"]]]' in html
+
+    def test_old_style_configs(self):
+        from django_summernote.settings import _copy_old_configs, SETTINGS_DEFAULT
+        from django_summernote.widgets import (SummernoteWidget, SummernoteInplaceWidget)
+
+        OLD_STYLE_CONFIG = {
+            'width': '640px',
+            'toolbar': [
+                ['font', ['bold']],
+            ],
+        }
+        _copy_old_configs(summernote_config, OLD_STYLE_CONFIG, SETTINGS_DEFAULT)
+
+        widget = SummernoteInplaceWidget()
+        html = widget.render(
+            'foobar', 'lorem ipsum', attrs={'id': 'id_foobar'}
+        )
+
+        assert '"width": "640px"' in html
+        assert '"height": 480' in html
+        assert '"toolbar": [["font", ["bold"]]]' in html
+
+        widget = SummernoteWidget()
+        html = widget.render(
+            'foobar', 'lorem ipsum', attrs={'id': 'id_foobar'}
+        )
+
+        assert '"width": "640px"' in html
+        assert '"height": 480' in html
+        assert '"toolbar": [["font", ["bold"]]]' in html

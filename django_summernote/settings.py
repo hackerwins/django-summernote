@@ -169,7 +169,7 @@ summernote_config = SETTINGS_DEFAULT.copy()
 summernote_config.update(SETTINGS_USER)
 
 
-def merge_configs():
+def _copy_old_configs(config, user, default):
     """
     NOTE: Will be deprecated from 0.9
     Copying old-style settings for backword-compatibility
@@ -181,10 +181,10 @@ def merge_configs():
         'toolbar',
     )
     for key in DEPRECATED_SUMMERNOTE_CONFIGS:
-        if SETTINGS_USER.get(key):
-            summernote_config['summernote'][key] = SETTINGS_USER.get(key)
-        if not summernote_config['summernote'].get(key):
-            summernote_config['summernote'][key] = SETTINGS_DEFAULT['summernote'].get(key)
+        if user.get(key):
+            config['summernote'][key] = user.get(key)
+        if not config['summernote'].get(key):
+            config['summernote'][key] = default['summernote'].get(key)
 
 
-merge_configs()
+_copy_old_configs(summernote_config, SETTINGS_USER, SETTINGS_DEFAULT)
