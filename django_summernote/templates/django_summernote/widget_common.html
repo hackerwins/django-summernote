@@ -7,7 +7,6 @@ function initSummernote_{{ id }}() {
         var csrftoken = '{{ csrf_token }}';
         var settings = window.parent.settings_{{ id }};
         var $sn = $('#summernote');
-        $sn.html(origin.value);
         $(iframe).height(settings.height);
 {% else %}
         var origin = window.document.getElementById('{{ id_src }}-textarea');
@@ -15,6 +14,7 @@ function initSummernote_{{ id }}() {
         var settings = {{ settings|safe }};
         var $sn = $('#{{ id_src }}');
 {% endif %}
+        $sn.html(origin.value);
         var $nEditor, $nCodable, $nImageInput;
         $(origin).hide();
 
