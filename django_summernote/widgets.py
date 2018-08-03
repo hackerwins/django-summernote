@@ -48,7 +48,7 @@ class SummernoteWidgetBase(forms.Textarea):
 
 
 class SummernoteWidget(SummernoteWidgetBase):
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, attrs=None, renderer=None):
         summernote_settings = self.summernote_settings()
         summernote_settings.update(self.attrs.pop('summernote', {}))
 
@@ -56,7 +56,8 @@ class SummernoteWidget(SummernoteWidgetBase):
         attrs_for_textarea['hidden'] = 'true'
         html = super(SummernoteWidget, self).render(name,
                                                     value,
-                                                    attrs_for_textarea)
+                                                    attrs_for_textarea,
+                                                    renderer)
 
         final_attrs = self.build_attrs(attrs)
         del final_attrs['id']  # Use original attributes without id.
@@ -92,7 +93,7 @@ class SummernoteInplaceWidget(SummernoteWidgetBase):
             summernote_config['js_for_inplace']
         )
 
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, attrs=None, renderer=None):
         summernote_settings = self.summernote_settings()
         summernote_settings.update(self.attrs.pop('summernote', {}))
 
@@ -101,7 +102,8 @@ class SummernoteInplaceWidget(SummernoteWidgetBase):
         attrs_for_textarea['id'] += '-textarea'
         html = super(SummernoteInplaceWidget, self).render(name,
                                                            value,
-                                                           attrs_for_textarea)
+                                                           attrs_for_textarea, 
+                                                           renderer)
         final_attrs = self.build_attrs(attrs)
         del final_attrs['id']  # Use original attributes without id.
 
