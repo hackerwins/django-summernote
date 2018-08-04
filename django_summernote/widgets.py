@@ -48,7 +48,7 @@ class SummernoteWidgetBase(forms.Textarea):
 
 
 class SummernoteWidget(SummernoteWidgetBase):
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, attrs=None, renderer=None):
         summernote_settings = self.summernote_settings()
         summernote_settings.update(self.attrs.pop('summernote', {}))
 
