@@ -56,7 +56,8 @@ class SummernoteWidget(SummernoteWidgetBase):
         attrs_for_textarea['hidden'] = 'true'
         html = super(SummernoteWidget, self).render(name,
                                                     value,
-                                                    attrs_for_textarea)
+                                                    attrs_for_textarea,
+                                                    renderer)
 
         final_attrs = self.build_attrs(attrs)
         del final_attrs['id']  # Use original attributes without id.
@@ -101,7 +102,8 @@ class SummernoteInplaceWidget(SummernoteWidgetBase):
         attrs_for_textarea['id'] += '-textarea'
         html = super(SummernoteInplaceWidget, self).render(name,
                                                            value,
-                                                           attrs_for_textarea)
+                                                           attrs_for_textarea, 
+                                                           renderer)
         final_attrs = self.build_attrs(attrs)
         del final_attrs['id']  # Use original attributes without id.
 
