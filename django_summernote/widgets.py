@@ -48,7 +48,11 @@ class SummernoteWidgetBase(forms.Textarea):
 
 
 class SummernoteWidget(SummernoteWidgetBase):
+<<<<<<< HEAD
+    def render(self, name, value, attrs=None, renderer=None):
+=======
     def render(self, name, value, attrs=None, **kwargs):
+>>>>>>> f417ec4a53d941e9c4bafc0d6acbb3b4861ecfd8
         summernote_settings = self.summernote_settings()
         summernote_settings.update(self.attrs.pop('summernote', {}))
 
@@ -92,7 +96,11 @@ class SummernoteInplaceWidget(SummernoteWidgetBase):
             summernote_config['default_js']
         )
 
+<<<<<<< HEAD
+    def render(self, name, value, attrs=None, renderer=None):
+=======
     def render(self, name, value, attrs=None, **kwargs):
+>>>>>>> f417ec4a53d941e9c4bafc0d6acbb3b4861ecfd8
         summernote_settings = self.summernote_settings()
         summernote_settings.update(self.attrs.pop('summernote', {}))
 
