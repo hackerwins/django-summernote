@@ -7,7 +7,6 @@ function initSummernote_{{ id }}() {
         var csrftoken = '{{ csrf_token }}';
         var settings = window.parent.settings_{{ id }};
         var $sn = $('#summernote');
-        $sn.html(origin.value);
         $(iframe).height(settings.height);
 {% else %}
         var origin = window.document.getElementById('{{ id_src }}-textarea');
@@ -15,6 +14,7 @@ function initSummernote_{{ id }}() {
         var settings = {{ settings|safe }};
         var $sn = $('#{{ id_src }}');
 {% endif %}
+        $sn.html(origin.value);
         var $nEditor, $nCodable, $nImageInput;
         $(origin).hide();
 
@@ -106,11 +106,7 @@ function initSummernote_{{ id }}() {
         };
 
         // include summernote language pack, synchronously
-        if( settings.lang != 'en-US' ) {
-            $.ajax({url: settings.url.language, dataType: "script", complete: initEditor})
-        } else {
-            initEditor();
-        }
+        $.ajax({url: settings.url.language, dataType: "script", complete: initEditor})
 
         // For CodeMirror
         $sn.on('summernote.codeview.toggled', function() {

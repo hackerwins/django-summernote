@@ -1,3 +1,4 @@
+0.8.8.8 - Fix compatibility issue for Django 2.1
 0.8.8.6 - A lot of internal code changes 
 0.8.8.5 - Now we're supporting Django 2.0
 0.8.8.4 - Hotfix for handling static files
