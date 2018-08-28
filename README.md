@@ -2,6 +2,8 @@ django-summernote
 =================
 [![Build Status](https://img.shields.io/travis/summernote/django-summernote.svg)](https://travis-ci.org/summernote/django-summernote)
 [![Coverage Status](https://coveralls.io/repos/github/summernote/django-summernote/badge.svg?branch=master)](https://coveralls.io/github/summernote/django-summernote?branch=master)
+[![Code Quality: Javascript](https://img.shields.io/lgtm/grade/javascript/g/summernote/django-summernote.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/summernote/django-summernote/context:javascript)
+[![Total Alerts](https://img.shields.io/lgtm/alerts/g/summernote/django-summernote.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/summernote/django-summernote/alerts)
 
 [Summernote](https://github.com/summernote/summernote) is a simple WYSIWYG editor.
 
