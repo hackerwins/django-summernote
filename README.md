@@ -22,12 +22,23 @@ SETUP
         INSTALLED_APPS += ('django_summernote', )
 
 3. Add `django_summernote.urls` to `urls.py`.
+     - For Django 1.x
 
-        urlpatterns = [
-            ...
-            url(r'^summernote/', include('django_summernote.urls')),
-            ...
-        ]
+           urlpatterns = [
+               ...
+               url(r'^summernote/', include('django_summernote.urls')),
+               ...
+           ]
+        
+     - For Django 2.x
+     
+           from django.urls import re_path, include
+           # ...
+           urlpatterns = [
+               ...
+               re_path(r'^summernote/', include('django_summernote.urls')),
+               ...
+           ]
 
 4. Be sure to set proper `MEDIA_URL` for attachments.
      - The following is an example test code:
