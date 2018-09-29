@@ -2,6 +2,7 @@
 from django.apps import apps
 from django.contrib.admin.sites import AdminSite
 from django.contrib.auth.models import User
+from django.db import models
 try:
     # Django >= 2.0
     from django.urls import reverse
@@ -87,7 +88,6 @@ class DjangoSummernoteTest(TestCase):
 
     def test_field(self):
         from django import forms
-        from django.db import models
         from django_summernote.fields import SummernoteTextField
 
         class SimpleModel1(models.Model):
@@ -306,7 +306,6 @@ class DjangoSummernoteTest(TestCase):
         assert '"lang": "fr-FR"' in html
 
     def test_admin_model(self):
-        from django.db import models
         from django_summernote.admin import SummernoteModelAdmin
         from django_summernote.admin import SummernoteInlineModelAdmin
         from django_summernote.widgets import SummernoteWidget
@@ -345,7 +344,6 @@ class DjangoSummernoteTest(TestCase):
         )
 
     def test_admin_model_inplace(self):
-        from django.db import models
         from django_summernote.admin import SummernoteModelAdmin
         from django_summernote.widgets import SummernoteInplaceWidget
 
@@ -367,7 +365,6 @@ class DjangoSummernoteTest(TestCase):
         self.summernote_config['iframe'] = True
 
     def test_admin_summernote_fields(self):
-        from django.db import models
         from django_summernote.admin import SummernoteModelAdmin
         from django_summernote.widgets import SummernoteWidget
 
