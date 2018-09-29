@@ -32,11 +32,11 @@ SETUP
         
      - For Django 2.x
      
-           from django.urls import re_path, include
+           from django.urls import include
            # ...
            urlpatterns = [
                ...
-               re_path(r'^summernote/', include('django_summernote.urls')),
+               path(r'^summernote/', include('django_summernote.urls')),
                ...
            ]
 
