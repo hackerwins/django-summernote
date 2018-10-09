@@ -223,7 +223,7 @@ def get_attachment_upload_to():
     """
     Return 'attachment_upload_to' from configuration
     """
-    return get_by_qname(config['attachment_upload_to'])
+    return get_by_qname(config['attachment_upload_to'], 'attachment_upload_to')
 
 
 @using_config
