@@ -29,7 +29,7 @@ class DjangoSummernoteConfig(AppConfig):
 
             # Attachment settings
             'disable_attachment': False,
-            'attachment_upload_to': 'django_summertime.utils.uploaded_filepath',
+            'attachment_upload_to': 'django_summernote.utils.uploaded_filepath',
             'attachment_storage_class': None,
             'attachment_filesize_limit': 1024 * 1024,
             'attachment_require_authentication': False,

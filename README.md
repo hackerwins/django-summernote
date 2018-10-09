@@ -62,6 +62,21 @@ SETUP
 
 USAGE
 -----
+## Django models
+In `models.py`,
+
+```python
+    from django.db import models
+
+    from django_summernote.fields import SummernoteTextField
+
+    class Post(models.Model):
+        content = SummernoteTextField()
+```
+
+`SummernoteTextField` inherits all of the properties of a regular `TextField`. Using this method, the `SummernoteWidget` will automatically be used in the django admin.
+
+
 ## Django admin site
 ### Apply summernote to all TextField in model
 In `admin.py`,
