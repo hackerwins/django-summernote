@@ -71,12 +71,11 @@ function initSummernote_{{ id }}() {
                                 nDropdown.css("left", left + "px");
                             }
                         });
-
-                        $nCodable.blur(function() {
-                            origin.value = $nCodable.val();
-                        });
                     },
                     onBlur: function() {
+                        origin.value = $sn.summernote('code');
+                    },
+                    onBlurCodeview: function() {
                         origin.value = $sn.summernote('code');
                     },
                     {% if not config.disable_attachment %}
@@ -114,16 +113,6 @@ function initSummernote_{{ id }}() {
 
         // include summernote language pack, synchronously
         $.ajax({url: settings.url.language, dataType: "script", complete: initEditor})
-
-        // For CodeMirror
-        $sn.on('summernote.codeview.toggled', function() {
-            var cmEditor = $nCodable.data('cmEditor');
-            if( cmEditor ) {
-                cmEditor.on('blur', function() {
-                    origin.value = cmEditor.getValue();
-                });
-            }
-        });
 
 {% if not iframe %}
         // See https://docs.djangoproject.com/en/dev/ref/contrib/csrf/#ajax

@@ -23,15 +23,15 @@ class SummernoteEditor(TemplateView):
 
         self.css = \
             config['base_css'] \
-            + config['css'] \
             + (config['codemirror_css'] if 'codemirror' in config else ()) \
-            + static_default_css
+            + static_default_css \
+            + config['css']
 
         self.js = \
             config['base_js'] \
-            + config['js'] \
             + (config['codemirror_js'] if 'codemirror' in config else ()) \
-            + static_default_js
+            + static_default_js \
+            + config['js']
 
     @using_config
     def get_context_data(self, **kwargs):

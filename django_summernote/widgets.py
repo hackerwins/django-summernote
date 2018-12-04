@@ -87,15 +87,15 @@ class SummernoteInplaceWidget(SummernoteWidgetBase):
         return forms.Media(
             css={
                 'all': (
-                    config['css_for_inplace'] +
                     (config['codemirror_css'] if 'codemirror' in config else ()) +
-                    config['default_css']
+                    config['default_css'] +
+                    config['css_for_inplace']
                 )
             },
             js=(
-                config['js_for_inplace'] +
                 (config['codemirror_js'] if 'codemirror' in config else ()) +
-                config['default_js']
+                config['default_js'] +
+                config['js_for_inplace']
             ))
 
     media = property(_media)
@@ -108,7 +108,6 @@ class SummernoteInplaceWidget(SummernoteWidgetBase):
         html = super(SummernoteInplaceWidget, self).render(
             name, value, attrs=attrs, **kwargs
         )
-        print(self.final_attr(attrs))
         context = {
             'id': attrs['id'].replace('-', '_'),
             'id_src': attrs['id'],
