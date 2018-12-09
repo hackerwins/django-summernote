@@ -5,7 +5,7 @@ from django.template.loader import render_to_string
 from django.utils.translation import ugettext as _
 from django.views.generic import TemplateView
 from django_summernote.utils import get_attachment_model, using_config
-if django_version <= (1, 9):
+if django_version < (1, 10):
     from django.views.generic import View
 else:
     from django.views import View
