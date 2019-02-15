@@ -211,9 +211,9 @@ SUMMERNOTE_CONFIG = {
 
     # Codemirror as codeview
     # If any codemirror settings are defined, it will include codemirror files automatically.
-    'css': {
+    'css': (
         '//cdnjs.cloudflare.com/ajax/libs/codemirror/5.29.0/theme/monokai.min.css',
-    },
+    ),
     'codemirror': {
         'mode': 'htmlmixed',
         'lineNumbers': 'true',
