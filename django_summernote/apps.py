@@ -34,6 +34,7 @@ class DjangoSummernoteConfig(AppConfig):
             'attachment_filesize_limit': 1024 * 1024,
             'attachment_require_authentication': False,
             'attachment_model': 'django_summernote.Attachment',
+            'attachment_absolute_uri': False,
 
             # Shortcut name for jQuery
             'jquery': '$',

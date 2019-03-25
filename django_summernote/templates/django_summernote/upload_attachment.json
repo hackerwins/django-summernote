@@ -4,7 +4,7 @@
     {
         "name": "{{ attachment.name }}",
         "size": {{ attachment.file.size|unlocalize }},
-        "url": "{{ attachment.file.url|safe }}"
+        "url": "{{ attachment.url|safe }}"
     }
     {% if not forloop.last %},{% endif %}
 {% endfor %}
