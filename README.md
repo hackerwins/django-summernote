@@ -195,6 +195,9 @@ SUMMERNOTE_CONFIG = {
 
     # You can disable attachment feature.
     'disable_attachment': False,
+    
+    # Set `True` to return attachment paths in absolute URIs.
+    'attachment_absolute_uri': False,
 
     # You can add custom css/js for SummernoteWidget.
     'css': (
