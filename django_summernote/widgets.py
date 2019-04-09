@@ -1,7 +1,7 @@
 import json
 from django import forms
 from django.conf import settings as django_settings
-from django.contrib.staticfiles.templatetags.staticfiles import static
+from django.templatetags.static import static
 from django.forms.utils import flatatt
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
