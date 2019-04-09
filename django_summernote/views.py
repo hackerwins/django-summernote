@@ -1,5 +1,5 @@
 from django import VERSION as django_version
-from django.contrib.staticfiles.templatetags.staticfiles import static
+from django.templatetags.static import static
 from django.http import HttpResponse, JsonResponse
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext as _
