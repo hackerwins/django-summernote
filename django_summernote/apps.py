@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 from django.conf import settings as django_settings
 from django_summernote.utils import (
-    LANG_TO_LOCALE, uploaded_filepath, get_theme_files
+    LANG_TO_LOCALE, get_theme_files
 )
 
 
@@ -29,7 +29,7 @@ class DjangoSummernoteConfig(AppConfig):
 
             # Attachment settings
             'disable_attachment': False,
-            'attachment_upload_to': uploaded_filepath,
+            'attachment_upload_to': 'django_summernote.utils.uploaded_filepath',
             'attachment_storage_class': None,
             'attachment_filesize_limit': 1024 * 1024,
             'attachment_require_authentication': False,

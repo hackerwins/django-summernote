@@ -114,6 +114,25 @@ SUMMERNOTE_THEME_FILES = {
 }
 
 
+def get_by_qname(path, desc):
+    try:
+        dot = path.rindex('.')
+    except ValueError:
+        raise ImproperlyConfigured("%s isn't a %s module." % (path, desc))
+    module, objname = path[:dot], path[dot + 1:]
+    try:
+        mod = import_module(module)
+    except ImportError as e:
+        raise ImproperlyConfigured('Error importing %s module %s: "%s"' %
+                (desc, module, e))
+    try:
+        obj = getattr(mod, objname)
+        return obj
+    except AttributeError:
+        raise ImproperlyConfigured('%s module "%s" does not define "%s"'
+                % (desc[0].upper() + desc[1:], module, objname))
+
+
 def using_config(_func=None):
     """
     This allows a function to use Summernote configuration
@@ -204,7 +223,7 @@ def get_attachment_upload_to():
     """
     Return 'attachment_upload_to' from configuration
     """
-    return config['attachment_upload_to']
+    return get_by_qname(config['attachment_upload_to'], 'attachment_upload_to')
 
 
 @using_config
