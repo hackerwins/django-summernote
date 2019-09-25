@@ -15,11 +15,11 @@ SETUP
 
 1. Install `django-summernote` to your python environment.
 
-        pip install django-summernote
+       pip install django-summernote
 
 2. Add `django_summernote` to `INSTALLED_APP` in `settings.py`.
 
-        INSTALLED_APPS += ('django_summernote', )
+       INSTALLED_APPS += ('django_summernote', )
 
 3. Add `django_summernote.urls` to `urls.py`.
      - For Django 1.x
