@@ -52,7 +52,7 @@ SETUP
            from django.conf.urls.static import static
             
            if settings.DEBUG:
-                urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+               urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
             
      - Please, read the official document more in detail: <https://docs.djangoproject.com/en/1.11/topics/files/>
 
