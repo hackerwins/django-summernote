@@ -26,8 +26,9 @@ CLASSIFIERS = [
 ]
 
 # mock is available as unittest.mock in Python 3.3 onwards.
-TESTS_REQUIRE = ['mock'] if sys.version_info < (3, 3, 0) else [] \
-    + ['django-dummy-plug']
+TESTS_REQUIRE = ['django-dummy-plug'] + \
+    ['mock'] if sys.version_info < (3, 3, 0) else []
+    
 
 setup(
     name=PROJECT,
