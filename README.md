@@ -179,6 +179,12 @@ SUMMERNOTE_CONFIG = {
         'print': {
             'stylesheetUrl': '/some_static_folder/printable.css',
         },
+        'codemirror': {
+            'mode': 'htmlmixed',
+            'lineNumbers': 'true',
+            # You have to include theme file in 'css' or 'css_for_inplace' before using it.
+            'theme': 'monokai',
+        },
     },
 
     # Need authentication while uploading attachments.
@@ -225,13 +231,6 @@ SUMMERNOTE_CONFIG = {
     'css': (
         '//cdnjs.cloudflare.com/ajax/libs/codemirror/5.29.0/theme/monokai.min.css',
     ),
-    'codemirror': {
-        'mode': 'htmlmixed',
-        'lineNumbers': 'true',
-
-        # You have to include theme file in 'css' or 'css_for_inplace' before using it.
-        'theme': 'monokai',
-    },
 
     # Lazy initialize
     # If you want to initialize summernote at the bottom of page, set this as True

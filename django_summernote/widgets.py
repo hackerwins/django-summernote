@@ -5,7 +5,8 @@ from django.templatetags.static import static
 from django.forms.utils import flatatt
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
-from django_summernote.utils import get_proper_language, using_config
+from django_summernote.utils import get_proper_language, using_config, \
+    has_codemirror_config
 
 try:
     from django.urls import reverse  # Django >= 2.0
@@ -88,13 +89,13 @@ class SummernoteInplaceWidget(SummernoteWidgetBase):
         return forms.Media(
             css={
                 'all': (
-                        (config['codemirror_css'] if 'codemirror' in config else ()) +
+                        (config['codemirror_css'] if has_codemirror_config() else ()) +
                         config['default_css'] +
                         config['css_for_inplace']
                 )
             },
             js=(
-                    (config['codemirror_js'] if 'codemirror' in config else ()) +
+                    (config['codemirror_js'] if has_codemirror_config() else ()) +
                     config['default_js'] +
                     config['js_for_inplace']
             ))

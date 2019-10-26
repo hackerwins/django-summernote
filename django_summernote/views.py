@@ -8,7 +8,8 @@ from django.utils.translation import ugettext as _
 from django.views.generic import TemplateView
 
 from django_summernote.forms import UploadForm
-from django_summernote.utils import get_attachment_model, using_config
+from django_summernote.utils import get_attachment_model, using_config, \
+    has_codemirror_config
 
 logger = logging.getLogger(__name__)
 
@@ -28,16 +29,15 @@ class SummernoteEditor(TemplateView):
 
         static_default_css = tuple(static(x) for x in config['default_css'])
         static_default_js = tuple(static(x) for x in config['default_js'])
-
         self.css = \
             config['base_css'] \
-            + (config['codemirror_css'] if 'codemirror' in config else ()) \
+            + (config['codemirror_css'] if has_codemirror_config() else ()) \
             + static_default_css \
             + config['css']
 
         self.js = \
             config['base_js'] \
-            + (config['codemirror_js'] if 'codemirror' in config else ()) \
+            + (config['codemirror_js'] if has_codemirror_config() else ()) \
             + static_default_js \
             + config['js']
 

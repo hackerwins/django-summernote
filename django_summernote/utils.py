@@ -247,3 +247,8 @@ def get_attachment_storage():
         return storage_class()
     else:
         return default_storage
+
+@using_config
+def has_codemirror_config():
+    return 'summernote' in config and \
+        'codemirror' in config['summernote']
