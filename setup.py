@@ -25,10 +25,10 @@ CLASSIFIERS = [
     'Topic :: Utilities',
 ]
 
+TESTS_REQUIRE = ['django-dummy-plug']
 # mock is available as unittest.mock in Python 3.3 onwards.
-TESTS_REQUIRE = ['django-dummy-plug'] + \
-    ['mock'] if sys.version_info < (3, 3, 0) else []
-    
+if sys.version_info < (3, 3, 0):
+    TESTS_REQUIRE += ['mock']
 
 setup(
     name=PROJECT,
