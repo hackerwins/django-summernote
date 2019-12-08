@@ -7,6 +7,9 @@
 
 Archived
 --------
+0.8.11.4.3 - Support for Django 3.0
+0.8.11.4.2 - Fix crispy-forms issue with SummernoteInplaceWidget
+0.8.11.4.1 - Security fixes and CustomUserPassesTestMixin in SummernoteUploadAttachment view
 0.8.11.4 - Minor changes on SummernoteWidget and update jQuery-file-upload files
 0.8.11.3 - Fix style issues (Fullscreen and crispy-forms)
 0.8.11.2 - Fix Fullscreen button for SummernoteWidget(iframe)
