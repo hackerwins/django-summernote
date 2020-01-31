@@ -55,11 +55,11 @@ LANG_TO_LOCALE = {
 SUMMERNOTE_THEME_FILES = {
     'bs3': {
         'base_css': (
-            '//stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css',
+            '/static/summernote/bootstrap/3.4.1/css/bootstrap.min.css',
         ),
         'base_js': (
-            '//code.jquery.com/jquery-3.3.1.min.js',
-            '//stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js',
+            '/static/summernote/jquery-3.3.1.min.js',
+            '/static/summernote/bootstrap/3.4.1/js/bootstrap.min.js',
         ),
         'default_css': (
             'summernote/summernote.css',
@@ -75,11 +75,11 @@ SUMMERNOTE_THEME_FILES = {
     },
     'bs4': {
         'base_css': (
-            '//stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css',
+            '/static/summernote/bootstrap/4.3.1/css/bootstrap.min.css',
         ),
         'base_js': (
-            '//code.jquery.com/jquery-3.3.1.min.js',
-            '//stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js',
+            '/static/summernote/jquery-3.3.1.min.js',
+            '/static/summernote/bootstrap/4.3.1/js/bootstrap.bundle.min.js',
         ),
         'default_css': (
             'summernote/summernote-bs4.css',
@@ -96,7 +96,7 @@ SUMMERNOTE_THEME_FILES = {
     'lite': {
         'base_css': (),
         'base_js': (
-            '//code.jquery.com/jquery-3.3.1.min.js',
+            '/static/summernote/jquery-3.3.1.min.js',
         ),
         'default_css': (
             'summernote/summernote-lite.css',
