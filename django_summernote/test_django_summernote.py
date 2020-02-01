@@ -552,7 +552,9 @@ class DjangoSummernoteTest(TestCase):
         response = self.client.get(url)
         html = response.content.decode('utf-8')
 
-        assert SUMMERNOTE_THEME_FILES['bs3']['base_css'][0] in html
+        for key in SUMMERNOTE_THEME_FILES['bs3']:
+            for file in SUMMERNOTE_THEME_FILES['bs3'][key]:
+                assert file in html
 
     @override_settings(SUMMERNOTE_THEME='bs4')
     def test_theme_bootstrap4(self):
@@ -565,4 +567,21 @@ class DjangoSummernoteTest(TestCase):
         response = self.client.get(url)
         html = response.content.decode('utf-8')
 
-        assert SUMMERNOTE_THEME_FILES['bs4']['base_css'][0] in html
+        for key in SUMMERNOTE_THEME_FILES['bs4']:
+            for file in SUMMERNOTE_THEME_FILES['bs4'][key]:
+                assert file in html
+    
+    @override_settings(SUMMERNOTE_THEME='lite')
+    def test_theme_lite(self):
+        from django_summernote.utils import SUMMERNOTE_THEME_FILES
+
+        # Force update summernote config to reset theme files
+        self.app_config.update_config()
+
+        url = reverse('django_summernote-editor', kwargs={'id': 'id_foobar'})
+        response = self.client.get(url)
+        html = response.content.decode('utf-8')
+
+        for key in SUMMERNOTE_THEME_FILES['lite']:
+            for file in SUMMERNOTE_THEME_FILES['lite'][key]:
+                assert file in html
