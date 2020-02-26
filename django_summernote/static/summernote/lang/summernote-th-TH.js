@@ -59,11 +59,7 @@
         addColRight: 'เพิ่มคอลัมน์ด้านขวา',
         delRow: 'ลบแถว',
         delCol: 'ลบคอลัมน์',
-<<<<<<< HEAD
-        delTable: 'ลบตาราง'
-=======
         delTable: 'ลบตาราง',
->>>>>>> master
       },
       hr: {
         insert: 'แทรกเส้นคั่น',
@@ -144,11 +140,7 @@
         'formatH5': 'เปลี่ยนรูปแบบบล็อคปัจจุบันเป็น H5',
         'formatH6': 'เปลี่ยนรูปแบบบล็อคปัจจุบันเป็น H6',
         'insertHorizontalRule': 'Insert horizontal rule',
-<<<<<<< HEAD
-        'linkDialog.show': 'เปิดหน้าแก้ไข Link'
-=======
         'linkDialog.show': 'เปิดหน้าแก้ไข Link',
->>>>>>> master
       },
       history: {
         undo: 'ยกเลิกการกระทำ',
