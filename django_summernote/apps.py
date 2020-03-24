@@ -97,7 +97,7 @@ class DjangoSummernoteConfig(AppConfig):
     def _copy_old_configs(self, user, default):
         """
         NOTE: Will be deprecated from 0.9
-        Copying old-style settings for backword-compatibility
+        Copying old-style settings for backward-compatibility
         """
         DEPRECATED_SUMMERNOTE_CONFIGS = (
             'width',
