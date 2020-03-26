@@ -129,6 +129,23 @@ Last, please don't forget to use `safe` templatetag while displaying in template
 
     {{ foobar|safe }}
 
+_Warning_: Please mind, that the widget does not provide any escaping. If you expose the widget to external users without taking care of this, it could potentially lead to an injection vulnerability. Therefore you can use the SummernoteTextFormField or SummernoteTextField, which escape all harmful tags through mozilla's package bleach:
+
+In `forms`,
+```python
+from django_summernote.fields import SummernoteTextFormField, SummernoteTextField
+
+class SomeForm(forms.Form):
+    foo = SummernoteTextFormField()
+
+```
+
+And for `ModelForm`,
+
+```python
+class FormForSomeModel(forms.ModelForm):
+    foo = SummernoteFormField()
+```
 
 THEMES
 ------

@@ -4,10 +4,18 @@ try:
 except ImportError:
     from mock import patch
 
+import json
+import os
+import sys
+
 from django.apps import apps
 from django.contrib.admin.sites import AdminSite
 from django.contrib.auth.models import User
 from django.db import models
+from django.test import Client, TestCase, override_settings
+
+from django_summernote.utils import (get_attachment_model,
+                                     get_attachment_storage)
 
 try:
     # Django >= 2.0
@@ -15,17 +23,11 @@ try:
 except ImportError:
     from django.core.urlresolvers import reverse
 
-from django.test import TestCase, Client, override_settings
-from django_summernote.utils import get_attachment_storage, get_attachment_model
-import sys
 
 if sys.version_info >= (3, 4):
     from importlib import reload
 else:
     from imp import reload
-
-import json
-import os
 
 
 IMAGE_FILE = 'django_summernote/static/summernote/summernote.png'
@@ -102,6 +104,11 @@ class DjangoSummernoteTest(TestCase):
         assert url in html
         assert 'id="id_foobar"' in html
 
+        illegal_tags = '<script></script>'
+        form_field = SummernoteTextFormField()
+        cleaned_text = form_field.clean(illegal_tags)
+        self.assertEqual(cleaned_text, '&lt;script&gt;&lt;/script&gt;')
+
     def test_field(self):
         from django import forms
         from django_summernote.fields import SummernoteTextField
@@ -120,6 +127,12 @@ class DjangoSummernoteTest(TestCase):
 
         assert url in html
         assert 'id="id_foobar"' in html
+
+        illegal_tags = '<script></script>'
+        model_field = SummernoteTextField()
+        model_instance = SimpleModel1()
+        cleaned_text = model_field.clean(illegal_tags, model_instance)
+        self.assertEqual(cleaned_text, '&lt;script&gt;&lt;/script&gt;')
 
     def test_empty(self):
         from django import forms
@@ -149,7 +162,6 @@ class DjangoSummernoteTest(TestCase):
                 response, '"name": "%s"' % os.path.basename(IMAGE_FILE))
             self.assertContains(response, '"url": ')
             self.assertContains(response, '"size": ')
-
 
     def test_attachment_with_custom_storage(self):
         self.summernote_config['attachment_storage_class'] = \
@@ -467,7 +479,7 @@ class DjangoSummernoteTest(TestCase):
             djangoFile = File(fp)
             djangoFile.name = os.path.basename(djangoFile.name)
             attachment.file = djangoFile
-            attachment.save();
+            attachment.save()
 
             self.assertEqual(str(attachment), djangoFile.name)
 
