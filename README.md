@@ -17,7 +17,7 @@ SETUP
 
        pip install django-summernote
 
-2. Add `django_summernote` to `INSTALLED_APP` in `settings.py`.
+2. Add `django_summernote` to `INSTALLED_APPS` in `settings.py`.
 
        INSTALLED_APPS += ('django_summernote', )
 
@@ -54,7 +54,7 @@ SETUP
            if settings.DEBUG:
                urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-     - Please, read the official document more in detail: <https://docs.djangoproject.com/en/1.11/topics/files/>
+     - Please, read the [official v3.0 documentation](https://docs.djangoproject.com/en/3.0/topics/files/) for more details on file uploads.
 
 5. If you're using Django 3.x with default SummernoteWidget, then
 
@@ -82,7 +82,7 @@ class SomeModelAdmin(SummernoteModelAdmin):  # instead of ModelAdmin
 admin.site.register(SomeModel, SomeModelAdmin)
 ```
 
-### Apply summernote to not all TextField in model
+### Apply summernote only to specific TextField in model
 Although `Post` model has several TextField, only `content` field will have `SummernoteWidget`.
 
 In `admin.py`,
@@ -150,12 +150,14 @@ class FormForSomeModel(forms.ModelForm):
 THEMES
 ------
 
-django-summernote is served with Bootstrap3 by default, but you can choose another options.
-You can change the theme by `SUMMERNOTE_THEME = '<theme_name>'` in `settings.py`.
+django-summernote is served with Bootstrap3 by default, but you can choose other options.
+You can change the theme by setting `SUMMERNOTE_THEME = '<theme_name>'` in `settings.py`.
 
- - Bootstrap3 (`bs3`)
- - Bootstrap4 (`bs4`)
- - Lite UI (without Bootstrap) (`lite`)
+`SUMMERNOTE_THEME` accepts the following values:
+
+ - `bs3`: Bootstrap3 theme
+ - `bs4`: Bootstrap4 theme
+ - `lite`: Lite UI theme (without Bootstrap)
 
 In settings.py
 
@@ -176,9 +178,9 @@ SUMMERNOTE_CONFIG = {
     # Using SummernoteWidget - iframe mode, default
     'iframe': True,
 
-    # Or, you can set it as False to use SummernoteInplaceWidget by default - no iframe mode
-    # In this case, you have to load Bootstrap/jQuery stuff by manually.
-    # Use this when you're already using Bootstraip/jQuery based themes.
+    # Or, you can set it to `False` to use SummernoteInplaceWidget by default - no iframe mode
+    # In this case, you have to load Bootstrap/jQuery sources and dependencies manually.
+    # Use this when you're already using Bootstrap/jQuery based themes.
     'iframe': False,
 
     # You can put custom Summernote settings
@@ -206,7 +208,7 @@ SUMMERNOTE_CONFIG = {
             ['view', ['fullscreen', 'codeview', 'help']],
         ],
 
-        # Or, set editor language/locale forcely
+        # Or, explicitly set language/locale for editor
         'lang': 'ko-KR',
         ...
 
@@ -222,7 +224,7 @@ SUMMERNOTE_CONFIG = {
         },
     },
 
-    # Need authentication while uploading attachments.
+    # Require users to be authenticated for uploading attachments.
     'attachment_require_authentication': True,
 
     # Set `upload_to` function for attachments.
@@ -234,10 +236,10 @@ SUMMERNOTE_CONFIG = {
     # Set custom model for attachments (default: 'django_summernote.Attachment')
     'attachment_model': 'my.custom.attachment.model', # must inherit 'django_summernote.AbstractAttachment'
 
-    # You can disable attachment feature.
+    # You can completely disable the attachment feature.
     'disable_attachment': False,
 
-    # Set `True` to return attachment paths in absolute URIs.
+    # Set to `True` to return attachment paths in absolute URIs.
     'attachment_absolute_uri': False,
 
     # test_func in summernote upload view. (Allow upload images only when user passes the test)
@@ -267,7 +269,7 @@ SUMMERNOTE_CONFIG = {
         '//cdnjs.cloudflare.com/ajax/libs/codemirror/5.29.0/theme/monokai.min.css',
     ),
 
-    # Lazy initialize
+    # Lazy initialization
     # If you want to initialize summernote at the bottom of page, set this as True
     # and call `initSummernote()` on your page.
     'lazy': True,
@@ -287,7 +289,7 @@ SUMMERNOTE_CONFIG = {
   - About Air-mode, see [Summernote air-mode example page](http://summernote.org/examples/#air-mode).
   - About toolbar customization, please refer [Summernote toolbar section](http://summernote.org/deep-dive/#custom-toolbar-popover).
 
-Or, you can styling editor via attributes of the widget. These adhoc styling will override settings from `SUMMERNOTE_CONFIG`.
+You can style the editor via widget's attributes. These adhoc styling will override settings from `SUMMERNOTE_CONFIG`.
 
 ```python
 # Apply adhoc style via attributes
