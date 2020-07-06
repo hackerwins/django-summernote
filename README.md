@@ -144,7 +144,7 @@ And for `ModelForm`,
 
 ```python
 class FormForSomeModel(forms.ModelForm):
-    foo = SummernoteFormField()
+    foo = SummernoteTextField()
 ```
 
 THEMES
