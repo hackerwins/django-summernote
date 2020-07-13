@@ -3,6 +3,7 @@ ALLOWED_TAGS = [
     'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
     'table', 'tbody', 'thead', 'tr', 'td',
     'abbr', 'acronym', 'b', 'blockquote', 'code', 'strike', 'u', 'sup', 'sub',
+    'pre', 'font',
 ]
 
 STYLES = [
@@ -10,6 +11,6 @@ STYLES = [
 ]
 
 ATTRIBUTES = {
-    '*': ['style', 'align', 'title', ],
+    '*': ['style', 'align', 'title', 'color', ],
     'a': ['href', ],
 }
