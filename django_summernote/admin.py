@@ -7,7 +7,7 @@ from django_summernote.utils import get_attachment_model, using_config
 from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 
 
-class SummernoteModelAdminMixin(object):
+class SummernoteModelAdminMixin:
     summernote_fields = '__all__'
 
     @using_config
@@ -21,7 +21,7 @@ class SummernoteModelAdminMixin(object):
             if db_field.name in self.summernote_fields:
                 kwargs['widget'] = summernote_widget
 
-        return super(SummernoteModelAdminMixin, self).formfield_for_dbfield(db_field, *args, **kwargs)
+        return super().formfield_for_dbfield(db_field, *args, **kwargs)
 
 
 class SummernoteInlineModelAdmin(SummernoteModelAdminMixin, InlineModelAdmin):

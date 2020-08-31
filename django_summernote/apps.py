@@ -13,7 +13,7 @@ class DjangoSummernoteConfig(AppConfig):
     config = {}
 
     def __init__(self, app_name, app_module):
-        super(DjangoSummernoteConfig, self).__init__(app_name, app_module)
+        super().__init__(app_name, app_module)
         self.update_config()
 
     def get_default_config(self):

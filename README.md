@@ -312,7 +312,7 @@ Run `tox`. If you don't have it, just `pip install tox`
 
 You can also run test with only specified targets.
 ```
-$ tox -e py27-dj111, py38-dj301
+$ tox -e py35-dj111, py38-dj301
 ```
 
 

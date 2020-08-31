@@ -4,11 +4,8 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 from django.templatetags.static import static
 from django.http import HttpResponse, JsonResponse
 from django.template.loader import render_to_string
-if django_version >= (3, 0):
-    from django.utils.translation import gettext as _
-else:
-    from django.utils.translation import ugettext as _
-from django.views.generic import TemplateView
+from django.utils.translation import gettext as _
+from django.views.generic import TemplateView, View
 
 from django_summernote.forms import UploadForm
 from django_summernote.utils import get_attachment_model, using_config, \
@@ -16,19 +13,13 @@ from django_summernote.utils import get_attachment_model, using_config, \
 
 logger = logging.getLogger(__name__)
 
-try:
-    # Django >= 1.10
-    from django.views import View
-except ImportError:
-    from django.views.generic import View
-
 
 class SummernoteEditor(TemplateView):
     template_name = 'django_summernote/widget_iframe_editor.html'
 
     @using_config
     def __init__(self):
-        super(SummernoteEditor, self).__init__()
+        super().__init__()
 
         static_default_css = tuple(static(x) for x in config['default_css'])
         static_default_js = tuple(static(x) for x in config['default_js'])
@@ -46,7 +37,7 @@ class SummernoteEditor(TemplateView):
 
     @using_config
     def get_context_data(self, **kwargs):
-        context = super(SummernoteEditor, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
 
         context['id'] = self.kwargs['id']
         context['id_safe'] = self.kwargs['id'].replace('-', '_')
@@ -63,7 +54,7 @@ class SummernoteUploadAttachment(UserPassesTestMixin, View):
         return config['test_func_upload_view'](self.request)
 
     def __init__(self):
-        super(SummernoteUploadAttachment, self).__init__()
+        super().__init__()
 
     def get(self, request, *args, **kwargs):
         return JsonResponse({

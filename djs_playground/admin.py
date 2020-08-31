@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.conf import settings
 from django.contrib import admin
 from django.forms.widgets import Media
@@ -27,7 +24,7 @@ class AuthorAdmin(SummernoteModelAdminMixin, admin.ModelAdmin):
     # JavaScript and CSS files should be imported manually like below.
     @property
     def media(self):
-        media = super(AuthorAdmin, self).media + Media(
+        media = super().media + Media(
             js = get_theme_files(settings.SUMMERNOTE_THEME, 'base_js'),
             css = {
             'all': get_theme_files(settings.SUMMERNOTE_THEME, 'base_css'),

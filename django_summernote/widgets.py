@@ -48,7 +48,7 @@ class SummernoteWidgetBase(forms.Textarea):
         # Original field should be hidden
         attrs_for_textarea = attrs.copy()
         attrs_for_textarea['hidden'] = 'true'
-        return super(SummernoteWidgetBase, self).render(
+        return super().render(
             name, value, attrs=attrs_for_textarea, **kwargs
         )
 
@@ -64,9 +64,7 @@ class SummernoteWidget(SummernoteWidgetBase):
         summernote_settings = self.summernote_settings()
         summernote_settings.update(self.attrs.get('summernote', {}))
 
-        html = super(SummernoteWidget, self).render(
-            name, value, attrs=attrs, **kwargs
-        )
+        html = super().render(name, value, attrs=attrs, **kwargs)
         context = {
             'id': attrs['id'],
             'id_safe': attrs['id'].replace('-', '_'),
@@ -107,9 +105,7 @@ class SummernoteInplaceWidget(SummernoteWidgetBase):
         summernote_settings = self.summernote_settings()
         summernote_settings.update(self.attrs.get('summernote', {}))
 
-        html = super(SummernoteInplaceWidget, self).render(
-            name, value, attrs=attrs, **kwargs
-        )
+        html = super().render(name, value, attrs=attrs, **kwargs)
         context = {
             'id': attrs['id'],
             'id_safe': attrs['id'].replace('-', '_'),
@@ -123,7 +119,7 @@ class SummernoteInplaceWidget(SummernoteWidgetBase):
         return mark_safe(html)
 
     def final_attr(self, attr):
-        attrs_for_final = super(SummernoteInplaceWidget, self).final_attr(attr)
+        attrs_for_final = super().final_attr(attr)
         # crispy form render bug
         if 'class' in attrs_for_final:
             attrs_for_final['class'] = attrs_for_final['class'].replace(' form-control', '')

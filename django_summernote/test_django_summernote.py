@@ -1,12 +1,7 @@
-# -*- coding: utf-8 -*-
-try:
-    from unittest.mock import patch
-except ImportError:
-    from mock import patch
-
 import json
 import os
 import sys
+from unittest.mock import patch
 
 from django.apps import apps
 from django.contrib.admin.sites import AdminSite

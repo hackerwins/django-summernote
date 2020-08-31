@@ -11,10 +11,10 @@ from django_summernote.widgets import SummernoteWidget
 class SummernoteTextFormField(fields.CharField):
     def __init__(self, *args, **kwargs):
         kwargs.update({'widget': SummernoteWidget()})
-        super(SummernoteTextFormField, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def to_python(self, value):
-        value = super(SummernoteTextFormField, self).to_python(value)
+        value = super().to_python(value)
         return bleach.clean(
             value, tags=ALLOWED_TAGS, attributes=ATTRIBUTES, styles=STYLES)
 
@@ -22,9 +22,9 @@ class SummernoteTextFormField(fields.CharField):
 class SummernoteTextField(models.TextField):
     def formfield(self, **kwargs):
         kwargs.update({'form_class': SummernoteTextFormField})
-        return super(SummernoteTextField, self).formfield(**kwargs)
+        return super().formfield(**kwargs)
 
     def to_python(self, value):
-        value = super(SummernoteTextField, self).to_python(value)
+        value = super().to_python(value)
         return bleach.clean(
             value, tags=ALLOWED_TAGS, attributes=ATTRIBUTES, styles=STYLES)

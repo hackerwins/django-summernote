@@ -1,4 +1,3 @@
-from __future__ import unicode_literals
 from django.db import models
 from django_summernote.utils import get_attachment_storage, get_attachment_upload_to
 
@@ -20,7 +19,7 @@ class AbstractAttachment(models.Model):
     def save(self, *args, **kwargs):
         if not self.name:
             self.name = self.file.name
-        super(AbstractAttachment, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     class Meta:
         abstract = True

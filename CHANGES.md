@@ -1,6 +1,7 @@
 0.8.13.0 (WIP)
 --------
  - Bump Summernote to 0.8.13
+ - Drop support for Python 2
 
 0.8.11.6
 --------
