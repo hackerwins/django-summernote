@@ -1,4 +1,4 @@
-version_info = (0, 8, 11, 6)
+version_info = (0, 8, 18, 0)
 
 __version__ = version = '.'.join(map(str, version_info))
 __project__ = PROJECT = 'django-summernote'

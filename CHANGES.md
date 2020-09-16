@@ -1,6 +1,6 @@
-0.8.13.0 (WIP)
+0.8.18.0 (WIP)
 --------
- - Bump Summernote to 0.8.13
+ - Bump Summernote to 0.8.18
 
 0.8.11.6
 --------
