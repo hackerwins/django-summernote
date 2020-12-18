@@ -1,5 +1,6 @@
 from django.apps import AppConfig
 from django.conf import settings as django_settings
+from django.contrib.staticfiles.templatetags.staticfiles import static
 from django_summernote.utils import (
     LANG_TO_LOCALE, uploaded_filepath, get_theme_files,
     example_test_func)
@@ -49,12 +50,14 @@ class DjangoSummernoteConfig(AppConfig):
 
             # Media files for CodeMirror
             'codemirror_css': (
-                '//cdnjs.cloudflare.com/ajax/libs/codemirror/5.40.0/codemirror.min.css',
+                '/static/codemirror-5.58.3/lib/codemirror.css',
+                '/static/codemirror-5.58.3/theme/elegant.css',
             ),
             'codemirror_js': (
-                '//cdnjs.cloudflare.com/ajax/libs/codemirror/5.40.0/codemirror.js',
-                '//cdnjs.cloudflare.com/ajax/libs/codemirror/5.40.0/mode/xml/xml.js',
-                '//cdnjs.cloudflare.com/ajax/libs/codemirror/5.40.0/mode/htmlmixed/htmlmixed.js',
+                '/static/codemirror-5.58.3/lib/codemirror.js',
+                '/static/codemirror-5.58.3/mode/xml/xml.js',
+                '/static/codemirror-5.58.3/mode/htmlmixed/htmlmixed.js',
+                '/static/codemirror-5.58.3/mode/django/django.js',
             ),
 
             # Media files for all Summernote widgets
