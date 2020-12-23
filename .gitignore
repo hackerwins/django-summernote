@@ -51,3 +51,6 @@ venv
 *.sqlite3
 djs_playground/media
 djs_playground/static
+
+# codemirror
+!django_summernote/static/codemirror*/lib/
