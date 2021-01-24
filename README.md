@@ -20,6 +20,12 @@ SETUP
 2. Add `django_summernote` to `INSTALLED_APPS` in `settings.py`.
 
        INSTALLED_APPS += ('django_summernote', )
+       
+    Additional for Django 3.x users
+       
+       Add `X_FRAME_OPTIONS` to your `settings.py`.
+       
+       X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 3. Add `django_summernote.urls` to `urls.py`.
      - For Django 1.x
