@@ -22,23 +22,14 @@ SETUP
        INSTALLED_APPS += ('django_summernote', )
 
 3. Add `django_summernote.urls` to `urls.py`.
-     - For Django 1.x
 
-           urlpatterns = [
-               ...
-               url(r'^summernote/', include('django_summernote.urls')),
-               ...
-           ]
-
-     - For Django 2.x
-
-           from django.urls import include
-           # ...
-           urlpatterns = [
-               ...
-               path('summernote/', include('django_summernote.urls')),
-               ...
-           ]
+       from django.urls import include
+       # ...
+       urlpatterns = [
+           ...
+           path('summernote/', include('django_summernote.urls')),
+           ...
+       ]
 
 4. Be sure to set proper `MEDIA_URL` for attachments.
      - The following is an example test code:
@@ -307,7 +298,7 @@ Run `tox`. If you don't have it, just `pip install tox`
 
 You can also run test with only specified targets.
 ```
-$ tox -e py35-dj111, py38-dj301
+$ tox -e py36-dj202,py39-dj302
 ```
 
 
