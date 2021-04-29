@@ -56,7 +56,9 @@ SETUP
 
      - Please, read the [official v3.0 documentation](https://docs.djangoproject.com/en/3.0/topics/files/) for more details on file uploads.
 
-5. Run database migration for preparing attachment model.
+5. Add `X_FRAME_OPTIONS = 'SAMEORIGIN'` to the `setting.py`
+
+6. Run database migration for preparing attachment model.
 
        python manage.py migrate
 
