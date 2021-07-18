@@ -45,6 +45,10 @@ SETUP
 
            MEDIA_URL = '/media/'
            MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+           
+     - When Registering Summernote in setting.py put X_FRAME_ORIGIN in last after media folder
+       
+           X_FRAME_OPTIONS = 'SAMEORIGIN'
 
      - When debug option is enabled(```DEBUG=True```), DO NOT forget to add urlpatterns as shown below:
 
@@ -59,6 +63,9 @@ SETUP
 5. Run database migration for preparing attachment model.
 
        python manage.py migrate
+    
+
+       
 
 USAGE
 -----
