@@ -17,10 +17,11 @@ SETUP
 
        pip install django-summernote
 
-2. Add `django_summernote` to `INSTALLED_APPS` in `settings.py`.
+2. Add `django_summernote` to `INSTALLED_APPS` in `settings.py` and `X_FRAME_OPTIONS` to allow `'SAMEORIGIN'` (set to `'DENY'` by the default in Django 3).
 
        INSTALLED_APPS += ('django_summernote', )
-
+       X_FRAME_OPTIONS = 'SAMEORIGIN'
+       
 3. Add `django_summernote.urls` to `urls.py`.
      - For Django 1.x
 
