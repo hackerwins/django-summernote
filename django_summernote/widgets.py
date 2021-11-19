@@ -25,9 +25,12 @@ class SummernoteWidgetBase(forms.Textarea):
             'lang': lang,
             'url': {
                 'language': static('summernote/lang/summernote-' + lang + '.min.js'),
-                'upload_attachment': reverse('django_summernote-upload_attachment'),
             },
         })
+        if not get_config()['disable_attachment']:
+            summernote_settings['url'].update({
+                'upload_attachment': reverse('django_summernote-upload_attachment'),
+            })
         return summernote_settings
 
     def value_from_datadict(self, data, files, name):
