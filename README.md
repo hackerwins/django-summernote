@@ -218,6 +218,17 @@ SUMMERNOTE_CONFIG = {
     # Require users to be authenticated for uploading attachments.
     'attachment_require_authentication': True,
 
+    # Set an authentication fuction for uploading attachments (default: None)
+    # - default authentication method is `request.user.is_authenticated`
+    # - custom authentication function must have an argument for HttpRequest
+    #   ```
+    #   from django.http import HttpRequest
+    #
+    #   def example_auth_func(request: HttpRequest):
+    #       return request.user.has_perm('can_upload')
+    #   ```
+    'attachment_authentication_func': None
+
     # Set `upload_to` function for attachments.
     'attachment_upload_to': my_custom_upload_to_func(),
 
