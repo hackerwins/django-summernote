@@ -74,6 +74,8 @@ class SummernoteUploadAttachment(UserPassesTestMixin, View):
 
     def post(self, request, *args, **kwargs):
         authenticated = request.user.is_authenticated
+        if get_config()['attachment_authentication_func']:
+            authenticated = get_config()['attachment_authentication_func'](self.request)
 
         if self.config['disable_attachment']:
             logger.error(

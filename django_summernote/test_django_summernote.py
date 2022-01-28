@@ -319,6 +319,24 @@ class DjangoSummernoteTest(TestCase):
             response = self.client.post(url, {'files': [fp]})
             self.assertEqual(response.status_code, 200)
 
+    def test_attachment_authentication_func_is_set(self):
+        url = reverse('django_summernote-upload_attachment')
+        self.summernote_config['attachment_require_authentication'] = True
+        def auth_func(request):
+            return True
+        self.summernote_config['attachment_authentication_func'] = auth_func
+        with open(IMAGE_FILE, 'rb') as fp:
+            response = self.client.post(url, {'files': [fp]})
+            self.assertEqual(response.status_code, 200)
+
+    def test_attachment_authentication_func_is_not_set(self):
+        url = reverse('django_summernote-upload_attachment')
+        self.summernote_config['attachment_require_authentication'] = True
+        self.summernote_config['attachment_authentication_func'] = None
+        with open(IMAGE_FILE, 'rb') as fp:
+            response = self.client.post(url, {'files': [fp]})
+            self.assertEqual(response.status_code, 403)
+
     @override_settings(USE_THOUSAND_SEPARATOR=True)
     def test_attachment_with_thousand_separator_option(self):
         url = reverse('django_summernote-upload_attachment')
