@@ -93,6 +93,11 @@ function initSummernote_{{ id_safe }}() {
                     {% if not config.disable_attachment %}
                     onImageUpload: function(files) {
                         // custom attachment data
+                        if ($(".note-editable")[0]){
+                            var s = '<img id="loader" src="https://media3.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif">';
+
+                            $(".note-editable")[0].innerHTML = s + $(".note-editable")[0].innerHTML
+                        }
                         var attachmentData = origin.dataset;
                         $nImageInput = $nEditor.find('.note-image-input');
                         $nImageInput.fileupload();
@@ -103,11 +108,13 @@ function initSummernote_{{ id_safe }}() {
                                 url: settings.url.upload_attachment,
                             })
                             .done(function (data, textStatus, jqXHR) {
+                                $("#loader").remove()
                                 $.each(data.files, function (index, file) {
                                     $sn.summernote("insertImage", file.url);
                                 });
                             })
                             .fail(function (jqXHR, textStatus, errorThrown) {
+                                $("#loader").remove()
                                 // if the error message from the server has any text in it, show it
                                 var msg = jqXHR.responseJSON;
                                 if (msg && msg.message) {
