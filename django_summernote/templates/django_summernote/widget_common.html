@@ -91,12 +91,12 @@ function initSummernote_{{ id_safe }}() {
                         origin.value = $sn.summernote('code');
                     },
                     {% if not config.disable_attachment %}
-                    onImageUpload: function(files) {
+onImageUpload: function(files) {
                         // custom attachment data
-                        if ($(".note-editable")[0]){
-                            var s = '<img id="loader" src="https://media3.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif">';
-
-                            $(".note-editable")[0].innerHTML = s + $(".note-editable")[0].innerHTML
+                        var $editor = $(".note-editor");
+                        if ($editor[0]) {
+                            var $loader = $('<div class="loader" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000;"><img src="https://media3.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Loading..."></div>');
+                            $editor.append($loader); // Append loader to the editor
                         }
                         var attachmentData = origin.dataset;
                         $nImageInput = $nEditor.find('.note-image-input');
@@ -108,13 +108,11 @@ function initSummernote_{{ id_safe }}() {
                                 url: settings.url.upload_attachment,
                             })
                             .done(function (data, textStatus, jqXHR) {
-                                $("#loader").remove()
                                 $.each(data.files, function (index, file) {
                                     $sn.summernote("insertImage", file.url);
                                 });
                             })
                             .fail(function (jqXHR, textStatus, errorThrown) {
-                                $("#loader").remove()
                                 // if the error message from the server has any text in it, show it
                                 var msg = jqXHR.responseJSON;
                                 if (msg && msg.message) {
@@ -124,6 +122,9 @@ function initSummernote_{{ id_safe }}() {
                                 else {
                                     alert('Got an error while uploading images.');
                                 }
+                            })
+                            .always(function() {
+                                if ($loader) $loader.remove(); // Remove loader after the upload is complete or failed
                             });
                         // Summernote will replace ImageInput when next the dialog opens.
                         // But we have to reset it to prevent additional uploading by form itself.
