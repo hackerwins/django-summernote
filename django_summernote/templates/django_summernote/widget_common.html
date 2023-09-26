@@ -91,7 +91,7 @@ function initSummernote_{{ id_safe }}() {
                         origin.value = $sn.summernote('code');
                     },
                     {% if not config.disable_attachment %}
-onImageUpload: function(files) {
+                    onImageUpload: function(files) {
                         // custom attachment data
                         var $editor = $(".note-editor");
                         if ($editor[0]) {
