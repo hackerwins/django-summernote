@@ -1,0 +1,36 @@
+name: test
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install tox and coverage
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install --upgrade tox tox-gh-actions coverage
+
+      - name: Test with tox
+        run: tox run -f py$(echo ${{ matrix.python-version }} | tr -d .)
+
+      - name: Generate coverage XML report
+        run: coverage xml
+
+      - name: Upload to Codecov
+        uses: codecov/codecov-action@v3
+        env:
+          PYTHON: ${{matrix.python-version}}
+        with:
+          env_vars: PYTHON

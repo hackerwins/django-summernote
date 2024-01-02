@@ -1,6 +1,8 @@
 0.8.20.0
 --------
  - Hotfix for wrong font urls
+ - Bump Summernote to 0.8.13
+ - Drop support for Python<3.8 and Django<3.2
 
 0.8.19.0
 --------
