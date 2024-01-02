@@ -1,8 +1,8 @@
 from django.db import models
 from django.forms import fields
 
-import bleach
-from django_summernote.settings import ALLOWED_TAGS, ATTRIBUTES, STYLES
+import nh3
+from django_summernote.settings import ALLOWED_TAGS, ATTRIBUTES
 from django_summernote.widgets import SummernoteWidget
 
 # code based on https://github.com/shaunsephton/django-ckeditor
@@ -15,8 +15,9 @@ class SummernoteTextFormField(fields.CharField):
 
     def to_python(self, value):
         value = super().to_python(value)
-        return bleach.clean(
-            value, tags=ALLOWED_TAGS, attributes=ATTRIBUTES, styles=STYLES)
+        return nh3.clean(
+            value, tags=ALLOWED_TAGS, attributes=ATTRIBUTES
+        )
 
 
 class SummernoteTextField(models.TextField):
@@ -26,5 +27,6 @@ class SummernoteTextField(models.TextField):
 
     def to_python(self, value):
         value = super().to_python(value)
-        return bleach.clean(
-            value, tags=ALLOWED_TAGS, attributes=ATTRIBUTES, styles=STYLES)
+        return nh3.clean(
+            value, tags=ALLOWED_TAGS, attributes=ATTRIBUTES
+        )

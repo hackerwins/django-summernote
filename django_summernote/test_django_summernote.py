@@ -88,10 +88,10 @@ class DjangoSummernoteTest(TestCase):
         assert url in html
         assert 'id="id_foobar"' in html
 
-        illegal_tags = '<script></script>'
+        illegal_tags = '<unknown>dangerous</unknown>'
         form_field = SummernoteTextFormField()
         cleaned_text = form_field.clean(illegal_tags)
-        self.assertEqual(cleaned_text, '&lt;script&gt;&lt;/script&gt;')
+        self.assertEqual(cleaned_text, 'dangerous')
 
     def test_field(self):
         from django import forms
@@ -112,11 +112,11 @@ class DjangoSummernoteTest(TestCase):
         assert url in html
         assert 'id="id_foobar"' in html
 
-        illegal_tags = '<script></script>'
+        illegal_tags = '<unknown>dangerous</unknown>'
         model_field = SummernoteTextField()
         model_instance = SimpleModel1()
         cleaned_text = model_field.clean(illegal_tags, model_instance)
-        self.assertEqual(cleaned_text, '&lt;script&gt;&lt;/script&gt;')
+        self.assertEqual(cleaned_text, 'dangerous')
 
     def test_empty(self):
         from django import forms

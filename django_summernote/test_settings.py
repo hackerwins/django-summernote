@@ -18,6 +18,8 @@ STATIC_URL = '/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'test_media'
 
+USE_TZ = True
+
 SECRET_KEY = 'django_summernote'
 
 ROOT_URLCONF = 'django_summernote.urls'
