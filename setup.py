@@ -13,10 +13,11 @@ CLASSIFIERS = [
     'License :: OSI Approved :: MIT License',
     'Programming Language :: Python :: 3',
     'Programming Language :: Python :: 3 :: Only',
-    'Programming Language :: Python :: 3.6',
-    'Programming Language :: Python :: 3.7',
     'Programming Language :: Python :: 3.8',
     'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
     'Programming Language :: Python',
     'Topic :: Internet :: WWW/HTTP',
     'Topic :: Software Development :: Libraries :: Python Modules',
@@ -32,12 +33,12 @@ setup(
 
     author='django-summernote contributors',
     maintainer='django-summernote maintainers',
-    url='http://github.com/summernote/django-summernote',
+    url='https://github.com/summernote/django-summernote',
 
     description='Summernote plugin for Django',
     classifiers=CLASSIFIERS,
 
-    install_requires=['django', 'bleach'],
+    install_requires=['django', 'nh3'],
     extras_require={
         'dev': [
             'django-dummy-plug',

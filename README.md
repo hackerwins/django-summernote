@@ -1,6 +1,6 @@
 django-summernote
 =================
-[![Build Status](https://img.shields.io/travis/summernote/django-summernote.svg)](https://travis-ci.org/summernote/django-summernote)
+[![GitHub Actions status](https://github.com/summernote/django-summernote/workflows/test/badge.svg)](https://github.com/summernote/django-summernote/actions)
 [![Coverage Status](https://coveralls.io/repos/github/summernote/django-summernote/badge.svg?branch=master)](https://coveralls.io/github/summernote/django-summernote?branch=master)
 
 [Summernote](https://github.com/summernote/summernote) is a simple WYSIWYG editor.
@@ -119,7 +119,11 @@ Last, please don't forget to use `safe` templatetag while displaying in template
 
     {{ foobar|safe }}
 
-__Warning__: Please mind, that the widget does not provide any escaping. If you expose the widget to external users without taking care of this, it could potentially lead to an injection vulnerability. Therefore you can use the SummernoteTextFormField or SummernoteTextField, which escape all harmful tags through mozilla's package bleach:
+__Warning__: Please mind, that the widget does not provide any escaping. If
+you expose the widget to external users without taking care of this, it could
+potentially lead to an injection vulnerability. Therefore you can use the
+SummernoteTextFormField or SummernoteTextField, which escape all harmful tags
+through nh3 package:
 
 In `forms`,
 ```python
