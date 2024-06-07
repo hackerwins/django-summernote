@@ -270,6 +270,8 @@ class DjangoSummernoteTest(TestCase):
 
     @patch('django_summernote.views.logger')
     def test_attachment_disable_attachment(self, mock_logging):
+        from django_summernote.widgets import SummernoteWidget
+
         url = reverse('django_summernote-upload_attachment')
         self.summernote_config['disable_attachment'] = True
 
@@ -278,6 +280,8 @@ class DjangoSummernoteTest(TestCase):
             self.assertEqual(response.status_code, 403)
             self.assertDictEqual(response.json(), {"status": "false", "message": "Attachment module is disabled"})
             self.assertTrue(mock_logging.error.called)
+
+        self.assertNotIn('upload_attachment', SummernoteWidget().summernote_settings()['url'])
 
         self.summernote_config['disable_attachment'] = False
 
@@ -303,7 +307,7 @@ class DjangoSummernoteTest(TestCase):
                 )
                 self.assertTrue(mock_logging.error.called)
         except ImportError:
-            # Without PIL, we cannot check the uploaded attachement has image format or not
+            # Without PIL, we cannot check the uploaded attachment has image format or not
             with open(IMAGE_FILE, 'rb') as fp:
                 response = self.client.post(url, {'files': [fp]})
                 self.assertEqual(response.status_code, 200)

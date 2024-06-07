@@ -230,8 +230,8 @@ SUMMERNOTE_CONFIG = {
     # You can completely disable the attachment feature.
     'disable_attachment': False,
 
-    # Set to `True` to return attachment paths in absolute URIs.
-    'attachment_absolute_uri': False,
+    # Set to `False` to return attachment paths in relative URIs.
+    'attachment_absolute_uri': True,
 
     # test_func in summernote upload view. (Allow upload images only when user passes the test)
     # https://docs.djangoproject.com/en/2.2/topics/auth/default/#django.contrib.auth.mixins.UserPassesTestMixin
